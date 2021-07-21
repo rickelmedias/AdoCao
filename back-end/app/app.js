@@ -1,21 +1,19 @@
+const morgan     = require('morgan');
+const express    = require('express');
+const bodyParser = require('body-parser');
+const app        = express();
+
 const routeAumigos = require('./routes/aumigos.js');
 
-const express   = require('express');
-const app       = express();
-
-// Morgan:
-const morgan    = require('morgan');
+// Use:
 app.use(morgan('dev'));
-
-// Input Communication format
 app.use(express.json());
-app.use(express.urlencoded({ extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 // Pages:
 app.use('/aumigos', routeAumigos);
 
 // Page not found:
-
 app.use((req, res, next) => {
     const error = new Error ('Error 404 Not Found');
     error.status = 404;

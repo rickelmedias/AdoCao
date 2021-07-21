@@ -6,13 +6,19 @@ const router    = express.Router();
 router.get('/', (req, res, next) => {
     res.status(200).send({
         return: 'GET aumigos'
-    })
+    });
 });
 
 router.post('/', (req, res, next) => {
+    const find = {
+        name: req.body.name
+    };
+
     res.status(201).send({
-        return: 'POST aumigos'
-    })
+        return: 'OK',
+        name: find.name,
+        JSON: find
+    });
 });
 
 
@@ -24,7 +30,7 @@ router.get('/:id_aumigos', (req, res, next) =>{
     res.status(200).send({
         return: 'GET determinated aumigo by id',
         id: id
-    })
+    });
 });
 
 
