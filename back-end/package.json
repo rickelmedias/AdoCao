@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend of adocao web-site",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RickelmeDias/AdoCao.git"
+  },
+  "keywords": [
+    "front-end",
+    "back-end",
+    "web",
+    "dev"
+  ],
+  "author": "Rickelme Dias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RickelmeDias/AdoCao/issues"
+  },
+  "homepage": "https://github.com/RickelmeDias/AdoCao#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
