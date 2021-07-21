@@ -3,11 +3,15 @@ const routeAumigos = require('./routes/aumigos.js');
 const express   = require('express');
 const app       = express();
 
+// Morgan:
 const morgan    = require('morgan');
+app.use(morgan('dev'));
+
+// Input Communication format
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
 
 // Pages:
-
-app.use(morgan('dev'));
 app.use('/aumigos', routeAumigos);
 
 // Page not found:
