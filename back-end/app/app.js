@@ -1,6 +1,5 @@
 const morgan     = require('morgan');
 const express    = require('express');
-const bodyParser = require('body-parser');
 const app        = express();
 
 const routeAumigos = require('./routes/aumigos.js');
@@ -9,6 +8,19 @@ const routeAumigos = require('./routes/aumigos.js');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Cors:
+app.use( (req, res, next) => {
+    const serverAccepted = '*';
+
+    res.header('Acess-Control-Allow-Origin', serverAccepted);
+    res.header('Acess-Control-Allow-Header',
+                'Origin, X-Requrested-With, Content-Type, Accept, Authorization'
+                );
+
+    next();
+});
+
 
 // Pages:
 app.use('/aumigos', routeAumigos);

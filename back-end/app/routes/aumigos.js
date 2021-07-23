@@ -1,5 +1,6 @@
 const express   = require('express');
 const router    = express.Router();
+const mysql     = require('../mysql.js').pool;
 
 // ==| Returning all 'Aumigos' |==
 
@@ -10,15 +11,36 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const find = {
-        name: req.body.name
-    };
+    const Req = {
+        breed: req.body.breed.trimStart().trimEnd()
+    }
 
-    res.status(201).send({
-        return: 'OK',
-        name: find.name,
-        JSON: find
+    mysql.getConnection(function (error, conn) {  
+   
+        DataTime_created = new Date().toLocaleString()
+        console.log(Req.breed);
+
+        conn.query('INSERT INTO adocao_db.breed (breed, created_at) VALUE (?, ?);', 
+        [Req.breed , DataTime_created], function (error, results, fields) {
+                conn.release();
+
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    })
+                }
+
+                res.status(201).send({
+                    msg: 'Breed has been created',
+                    id_breed: results.insertId,
+                    breed_created: Req.breed,
+                    created_at: DataTime_created
+                })
+
+        });
     });
+      
 });
 
 
