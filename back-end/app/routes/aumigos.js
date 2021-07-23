@@ -1,27 +1,48 @@
-const express   = require('express');
-const router    = express.Router();
-const mysql     = require('../mysql.js').pool;
+const express = require('express');
+const router = express.Router();
+const mysql = require('../mysql.js').pool;
 
 // ==| Returning all 'Aumigos' |==
 
 router.get('/', (req, res, next) => {
-    res.status(200).send({
-        return: 'GET aumigos'
+    mysql.getConnection(function (error, conn) {
+        if (error) { return res.status(500).send({ error: error }) }
+
+        conn.query(
+            'SELECT * FROM adocao_db.breed;',
+            function (error, results, fields) {
+                conn.release();
+                
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    });
+                }
+
+                res.status(200).send({
+                    response: results
+                });
+            }
+        )
     });
 });
 
+
+// INSERT BREED
 router.post('/', (req, res, next) => {
     const Req = {
         breed: req.body.breed.trimStart().trimEnd()
     }
 
-    mysql.getConnection(function (error, conn) {  
-   
+    mysql.getConnection(function (error, conn) {
+        if (error) { return res.status(500).send({ error: error }) }
+
         DataTime_created = new Date().toLocaleString()
         console.log(Req.breed);
 
-        conn.query('INSERT INTO adocao_db.breed (breed, created_at) VALUE (?, ?);', 
-        [Req.breed , DataTime_created], function (error, results, fields) {
+        conn.query('INSERT INTO adocao_db.breed (breed, created_at) VALUE (?, ?);',
+            [Req.breed, DataTime_created], function (error, results, fields) {
                 conn.release();
 
                 if (error) {
@@ -38,20 +59,38 @@ router.post('/', (req, res, next) => {
                     created_at: DataTime_created
                 })
 
-        });
+            });
     });
-      
+
 });
 
 
 // ==| Returning determinated 'Aumigo' |==
 
-router.get('/:id_aumigos', (req, res, next) =>{
+router.get('/:id_aumigos', (req, res, next) => {
     const id = req.params.id_aumigos
 
-    res.status(200).send({
-        return: 'GET determinated aumigo by id',
-        id: id
+    mysql.getConnection(function (error, conn) {
+        if (error) { return res.status(500).send({error: error})}
+
+        conn.query(
+                    'SELECT * FROM adocao_db.breed WHERE id_breed = ?;',
+                    [id],
+                    function (error, results, fields) {
+                        conn.release();
+
+                        if (error) {
+                            return res.status(500).send({
+                                error: error,
+                                response: null
+                            });
+                        }
+
+                        res.status(200).send({
+                            response: results
+                        })
+                    }
+        )
     });
 });
 
