@@ -2,7 +2,7 @@ const morgan     = require('morgan');
 const express    = require('express');
 const app        = express();
 
-const routeAumigos = require('./routes/aumigos.js');
+const routeBreeds = require('./routes/breeds.js');
 
 // Use:
 app.use(morgan('dev'));
@@ -23,7 +23,7 @@ app.use( (req, res, next) => {
 
 
 // Pages:
-app.use('/aumigos', routeAumigos);
+app.use('/breeds', routeBreeds);
 
 // Page not found:
 app.use((req, res, next) => {
