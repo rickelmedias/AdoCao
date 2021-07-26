@@ -36,9 +36,7 @@ router.get('/', (req, res, next) => {
                     })
                 }
 
-                res.status(200).send({
-                    response: response
-                });
+                return res.status(200).send(response);
             }
         )
     });
@@ -55,8 +53,8 @@ router.post('/', (req, res, next) => {
 
         const DataTime_created = new Date().toLocaleString();
 
-        conn.query('INSERT INTO adocao_db.breed (breed, created_at) VALUE (?, ?);',
-            [Req.breed, DataTime_created], function (error, results, field) {
+        conn.query('INSERT INTO adocao_db.breed (breed, created_at, updated_at) VALUE (?, ?, ?);',
+            [Req.breed, DataTime_created, DataTime_created], function (error, results, field) {
                 conn.release();
 
                 if (error) {
@@ -66,12 +64,22 @@ router.post('/', (req, res, next) => {
                     })
                 }
 
-                res.status(201).send({
+                const response = {
                     msg: 'Breed has been created',
-                    id_breed: results.insertId,
-                    breed_created: Req.breed,
-                    created_at: DataTime_created
-                })
+                    breed_created: {
+                        id_breed: results.insertId,
+                        name_breed: Req.breed,
+                        created_at: DataTime_created,
+                        updated_at: DataTime_created
+                    },
+                    request: {
+                        method: "POST",
+                        description: "ADD A BREED",
+                        url: "http://localhost:3003/breeds"
+                    }
+                }
+
+                return res.status(201).send(response);
 
             });
     });
@@ -99,9 +107,25 @@ router.get('/:id_aumigos', (req, res, next) => {
                     });
                 }
 
-                res.status(200).send({
-                    response: results
-                })
+                if (results.length == 0) {
+                    return res.status(404).send({
+                        msg: 'ID not found.'
+                    })
+                } 
+
+                const response = {
+                    id_breed: id,
+                    name_breed: results[0].breed,
+                    created_at: results[0].created_at,
+                    updated_at: results[0].updated_at,
+                    request: {
+                        method: "GET",
+                        description: "SHOW SPECIFY BREED DETAILS",
+                        url: "http://localhost:3003/breeds/" + id
+                    }
+                }
+
+                res.status(200).send(response);
             }
         )
     });
@@ -137,12 +161,21 @@ router.patch('/', (req, res, next) => {
                     });
                 }
 
-                res.status(202).send({
+                const response = {
                     msg: 'Breed has been updated',
-                    id_breed: results.insertId,
-                    breed_udpated: Req.breed,
-                    updated_at: Req.updated_at
-                });
+                    breed_created: {
+                        id_breed: Req.id_breed,
+                        name_breed: Req.breed,
+                        updated_at: Req.updated_at
+                    },
+                    request: {
+                        method: "GET",
+                        description: "SHOW UPDATED DETAILS OF BREED",
+                        url: "http://localhost:3003/breeds/" + Req.id_breed
+                    }
+                }
+
+                res.status(202).send(response);
             }
         )
     })
@@ -171,10 +204,20 @@ router.delete('/', (req, res, next) => {
                         response: null
                     });
                 }
+                
+                const response = {
+                    msg: 'Breed has been deleted',
+                    request: {
+                        method: "POST",
+                        description: "ADD A NEW BREED",
+                        url: "http://localhost:3003/breeds",
+                        body: {
+                                breed: "String"
+                        }
+                    }
+                }
 
-                res.status(202).send({
-                    msg: 'Breed has been deleted'
-                });
+                res.status(202).send(response);
             }
 
         )
