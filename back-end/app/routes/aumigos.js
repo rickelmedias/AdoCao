@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
         if (error) { return res.status(500).send({ error: error }) }
 
         conn.query(
-            'SELECT * FROM adocao_db.breed;',
+            'SELECT * FROM adocao_db.aumigos;',
             function (error, results, field) {
                 conn.release();
 
@@ -21,16 +21,14 @@ router.get('/', (req, res, next) => {
 
                 const response = {
                     amount: results.length,
-                    breed: results.map(breeds => {
+                    aumigos: results.map(aumigos => {
                         return {
-                            id_breed: breeds.id_breed,
-                            breed: breeds.breed,
-                            created_at: breeds.created_at,
-                            updated_at: breeds.updated_at,
+                            id_aumigo: aumigos.id_aumigos,
+                            name: aumigos.name,
                             request: {
                                 method: 'GET',
-                                description: '',
-                                url: 'http://localhost:3003/breeds/' + breeds.id_breed
+                                description: `SHOW MORE ABOUT ${aumigos.name.toUpperCase()}`,
+                                url: 'http://localhost:3003/aumigos/' + aumigos.id_aumigos
                             }
                         }
                     })
@@ -45,7 +43,10 @@ router.get('/', (req, res, next) => {
 // INSERT BREED
 router.post('/', (req, res, next) => {
     const Req = {
-        breed: req.body.breed.trimStart().trimEnd()
+        name: req.body.name.trimStart().trimEnd(),
+        age: req.body.age,
+        gender: req.body.gender.toUpperCase().charAt(0),
+        breed_id_breed: req.body.breed_id_breed
     }
 
     mysql.getConnection(function (error, conn) {
@@ -53,8 +54,8 @@ router.post('/', (req, res, next) => {
 
         const DataTime_created = new Date().toLocaleString();
 
-        conn.query('INSERT INTO adocao_db.breed (breed, created_at, updated_at) VALUE (?, ?, ?);',
-            [Req.breed, DataTime_created, DataTime_created], function (error, results, field) {
+        conn.query('INSERT INTO adocao_db.aumigos (name, age, gender, breed_id_breed, updated_at, created_at) VALUE (?, ?, ?, ?, ?, ?);',
+            [Req.name, Req.age, Req.gender, Req.breed_id_breed, DataTime_created, DataTime_created], function (error, results, field) {
                 conn.release();
 
                 if (error) {
@@ -65,17 +66,26 @@ router.post('/', (req, res, next) => {
                 }
 
                 const response = {
-                    msg: 'Breed has been created',
-                    breed_created: {
-                        id_breed: results.insertId,
-                        name_breed: Req.breed,
+                    msg: 'Aumigo has been created',
+                    aumigo_created: {
+                        id_aumigo: results.insertId,
+                        name: Req.name,
+                        age: Req.age,
+                        gender: Req.gender,
+                        breed_id_breed: Req.breed_id_breed,
                         created_at: DataTime_created,
                         updated_at: DataTime_created
                     },
                     request: {
                         method: "POST",
-                        description: "ADD A BREED",
-                        url: "http://localhost:3003/breeds"
+                        description: "ADD A NEW AUMIGO",
+                        url: "http://localhost:3003/aumigos",
+                        body: {
+                            name: "String",
+                            age: "Number",
+                            gender: "String",
+                            breed_id_breed: "Number"
+                        }
                     }
                 }
 
@@ -88,14 +98,18 @@ router.post('/', (req, res, next) => {
 
 
 // SELECT BREED BY ID
-router.get('/:id_breeds', (req, res, next) => {
-    const id = req.params.id_breeds
+router.get('/:id_aumigos', (req, res, next) => {
+    const id = req.params.id_aumigos
 
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ error: error }) }
 
-        conn.query(
-            'SELECT * FROM adocao_db.breed WHERE id_breed = ?;',
+        conn.query(            
+            `SELECT id_aumigos, name, age, gender, breed, aumigos.created_at, aumigos.updated_at ` +
+            `FROM adocao_db.aumigos ` +
+            `INNER JOIN adocao_db.breed ` +
+            `ON adocao_db.aumigos.breed_id_breed = adocao_db.breed.id_breed `+
+            `WHERE adocao_db.aumigos.id_aumigos = ?;`,
             [id],
             function (error, results, field) {
                 conn.release();
@@ -111,17 +125,20 @@ router.get('/:id_breeds', (req, res, next) => {
                     return res.status(404).send({
                         msg: 'ID not found.'
                     })
-                } 
+                }
 
                 const response = {
-                    id_breed: id,
-                    name_breed: results[0].breed,
+                    id_aumigos: id,
+                    name: results[0].name,
+                    age: results[0].age,
+                    gender: results[0].gender,
+                    breed: results[0].breed,
                     created_at: results[0].created_at,
                     updated_at: results[0].updated_at,
                     request: {
                         method: "GET",
-                        description: "SHOW SPECIFY BREED DETAILS",
-                        url: "http://localhost:3003/breeds/" + id
+                        description: "SHOW SPECIFY AUMIGO DETAILS",
+                        url: "http://localhost:3003/aumigos/" + id
                     }
                 }
 
@@ -134,17 +151,22 @@ router.get('/:id_breeds', (req, res, next) => {
 // UPDATE BREED
 router.patch('/', (req, res, next) => {
     const Req = {
-        id_breed: req.body.id_breed,
-        breed: req.body.breed.trimStart().trimEnd(),
+        id_aumigos: req.body.id_aumigos,
+        name: req.body.name.trimStart().trimEnd(),
+        age: req.body.age,
+        gender: req.body.gender.toUpperCase().charAt(0),
+        breed_id_breed: req.body.breed_id_breed,
         updated_at: new Date().toLocaleString()
     }
 
     const queryUpdate =
-        `UPDATE adocao_db.breed ` +
-        `SET breed = '${Req.breed}', ` +
+        `UPDATE adocao_db.aumigos ` +
+        `SET name = '${Req.name}', ` +
+        `age = ${Req.age}, ` +
+        `gender = '${Req.gender}', ` +
+        `breed_id_breed = ${Req.breed_id_breed}, ` +
         `updated_at = '${Req.updated_at}' ` +
-        `WHERE id_breed = ${Req.id_breed};`;
-
+        `WHERE id_aumigos = ${Req.id_aumigos};`;
 
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ error: error }); }
@@ -160,22 +182,26 @@ router.patch('/', (req, res, next) => {
                         response: null
                     });
                 }
-
+                
                 const response = {
                     msg: 'Breed has been updated',
-                    breed_updated: {
-                        id_breed: Req.id_breed,
-                        name_breed: Req.breed,
-                        updated_at: Req.updated_at
+                    aumigo_updated: {
+                        id_aumigos: Req.id_aumigos,
+                        name: Req.name,
+                        age: Req.age,
+                        gender: Req.gender,
+                        breed: Req.breed_id_breed,
+                        created_at: Req.created_at,
+                        updated_at: Req.updated_at,
                     },
                     request: {
                         method: "GET",
-                        description: "SHOW UPDATED DETAILS OF BREED",
-                        url: "http://localhost:3003/breeds/" + Req.id_breed
+                        description: "SHOW SPECIFY AUMIGO DETAILS",
+                        url: "http://localhost:3003/aumigos/" + Req.id_aumigos
                     }
                 }
 
-                res.status(202).send(response);
+                return res.status(202).send(response);
             }
         )
     })
@@ -188,7 +214,7 @@ router.delete('/', (req, res, next) => {
     };
 
     const queryDelete =
-        `DELETE FROM adocao_db.breed ` +
+        `DELETE FROM adocao_db.aumigos ` +
         `WHERE id_breed = ${Req.id_breed};`;
 
     mysql.getConnection(function (error, conn) {
@@ -204,15 +230,18 @@ router.delete('/', (req, res, next) => {
                         response: null
                     });
                 }
-                
+
                 const response = {
                     msg: 'Breed has been deleted',
                     request: {
                         method: "POST",
                         description: "ADD A NEW BREED",
-                        url: "http://localhost:3003/breeds",
+                        url: "http://localhost:3003/aumigos",
                         body: {
-                                breed: "String"
+                            name: "String",
+                            age: "Number",
+                            gender: "String",
+                            breed_id_breed: "Number"
                         }
                     }
                 }
