@@ -2,7 +2,28 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql.js').pool;
 
-// SELECT ALL BREED
+const multer = require('multer');
+
+const storageImage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, './uploads/')
+    },
+
+    filename: function (req, file, callback) {
+        
+        callback(null, new Date().toISOString().slice(0, 19).replace(/:/g,"-") + "-" + file.originalname);
+    }
+});
+
+const upload = multer({ 
+                            storage: storageImage,
+                            limits: {
+                                fileSize: (1024 * 1024) * 1 // 1 MB
+                            }
+                        
+                        });
+
+// SELECT ALL DOGS
 router.get('/', (req, res, next) => {
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ error: error }) }
@@ -40,8 +61,10 @@ router.get('/', (req, res, next) => {
     });
 });
 
-// INSERT BREED
-router.post('/', (req, res, next) => {
+// INSERT DOGS
+router.post('/', upload.single('image-aumigo'), (req, res, next) => {
+    console.log(req.file);
+    
     const Req = {
         name: req.body.name.trimStart().trimEnd(),
         age: req.body.age,
@@ -96,8 +119,7 @@ router.post('/', (req, res, next) => {
 
 });
 
-
-// SELECT BREED BY ID
+// SELECT DOGS BY ID
 router.get('/:id_aumigos', (req, res, next) => {
     const id = req.params.id_aumigos
 
@@ -148,7 +170,7 @@ router.get('/:id_aumigos', (req, res, next) => {
     });
 });
 
-// UPDATE BREED
+// UPDATE DOGS
 router.patch('/', (req, res, next) => {
     const Req = {
         id_aumigos: req.body.id_aumigos,
@@ -207,7 +229,7 @@ router.patch('/', (req, res, next) => {
     })
 });
 
-// DELETE BREED
+// DELETE DOGS
 router.delete('/', (req, res, next) => {
     const Req = {
         id_breed: req.body.id_breed

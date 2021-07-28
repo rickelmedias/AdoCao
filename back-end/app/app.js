@@ -22,7 +22,6 @@ app.use( (req, res, next) => {
     next();
 });
 
-
 // Pages:
 app.use('/breeds', routeBreeds);
 app.use('/aumigos', routeAumigos);
