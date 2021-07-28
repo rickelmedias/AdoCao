@@ -15,13 +15,21 @@ const storageImage = multer.diskStorage({
     }
 });
 
+const fileFilter = (req, file, callback) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        callback(null, true);
+    } else {
+        callback(null, false);
+    }
+};
+
 const upload = multer({ 
-                            storage: storageImage,
-                            limits: {
-                                fileSize: (1024 * 1024) * 1 // 1 MB
-                            }
-                        
-                        });
+        storage: storageImage,
+        limits: {
+            fileSize: (1024 * 1024) * 1 // 1 MB
+        },
+        fileFilter: fileFilter
+});
 
 // SELECT ALL DOGS
 router.get('/', (req, res, next) => {
@@ -63,13 +71,13 @@ router.get('/', (req, res, next) => {
 
 // INSERT DOGS
 router.post('/', upload.single('image-aumigo'), (req, res, next) => {
-    console.log(req.file);
     
     const Req = {
         name: req.body.name.trimStart().trimEnd(),
         age: req.body.age,
         gender: req.body.gender.toUpperCase().charAt(0),
-        breed_id_breed: req.body.breed_id_breed
+        breed_id_breed: req.body.breed_id_breed,
+        file: req.file.path
     }
 
     mysql.getConnection(function (error, conn) {
@@ -77,8 +85,15 @@ router.post('/', upload.single('image-aumigo'), (req, res, next) => {
 
         const DataTime_created = new Date().toLocaleString();
 
-        conn.query('INSERT INTO adocao_db.aumigos (name, age, gender, breed_id_breed, updated_at, created_at) VALUE (?, ?, ?, ?, ?, ?);',
-            [Req.name, Req.age, Req.gender, Req.breed_id_breed, DataTime_created, DataTime_created], function (error, results, field) {
+        conn.query('INSERT INTO adocao_db.aumigos (name, age, gender, breed_id_breed, updated_at, created_at, image_aumigos) VALUE (?, ?, ?, ?, ?, ?, ?);',
+            [   Req.name, 
+                Req.age, 
+                Req.gender, 
+                Req.breed_id_breed, 
+                DataTime_created, 
+                DataTime_created,
+                Req.file
+            ], function (error, results, field) {
                 conn.release();
 
                 if (error) {
