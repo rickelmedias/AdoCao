@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql.js').pool;
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+require('dotenv').config();
+
+const JWT = {
+    token: process.env.JWT_TOKEN
+};
+
+// Register:
 
 router.post('/register', (req, res, next) => {
     mysql.getConnection( (error, conn) => {
@@ -33,6 +42,49 @@ router.post('/register', (req, res, next) => {
                 });
         });
 
+    });
+});
+
+
+// Login:
+
+router.post('/login', (req, res, next) => {
+    mysql.getConnection( (error, conn) => {
+        if (error) { return res.status(500).send({error: error})}
+
+        const query = `SELECT * FROM users WHERE login = ?`;
+        conn.query(query, [req.body.login], (error, results, fields) => {
+            conn.release();
+
+            if (error) {
+                return res.status(500).send({error: error})
+            }
+            if (results.length < 1) {
+                return res.status(401).send({ error: 'Authentication failed.'})
+            }
+
+            bcrypt.compare(req.body.pass, results[0].pass, (error, result) => {
+                if (error) {
+                    return res.status(401).send({ error: 'Authentication failed.'})
+                }
+
+                if (result) {
+                    let token = jwt.sign({
+                        id_user: results[0].id_user,
+                        login: results[0].login
+                    }, JWT.token,
+                    {
+                        expiresIn: "1h",
+                    });
+                    return res.status(200).send({ 
+                        msg: 'Sucess',
+                        token: token
+                    });
+                }
+
+                return res.status(401).send({ error: 'Authentication failed.'});
+            });
+        });
     });
 });
 
