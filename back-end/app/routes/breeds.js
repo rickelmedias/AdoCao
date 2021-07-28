@@ -86,7 +86,6 @@ router.post('/', (req, res, next) => {
 
 });
 
-
 // SELECT BREED BY ID
 router.get('/:id_breeds', (req, res, next) => {
     const id = req.params.id_breeds
