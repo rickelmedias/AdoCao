@@ -112,7 +112,8 @@ router.post('/', upload.single('image-aumigo'), (req, res, next) => {
                         gender: Req.gender,
                         breed_id_breed: Req.breed_id_breed,
                         created_at: DataTime_created,
-                        updated_at: DataTime_created
+                        updated_at: DataTime_created,
+                        image_aumigo: Req.file
                     },
                     request: {
                         method: "POST",
@@ -142,7 +143,7 @@ router.get('/:id_aumigos', (req, res, next) => {
         if (error) { return res.status(500).send({ error: error }) }
 
         conn.query(            
-            `SELECT id_aumigos, name, age, gender, breed, aumigos.created_at, aumigos.updated_at ` +
+            `SELECT id_aumigos, name, age, gender, breed, aumigos.created_at, aumigos.updated_at, aumigos.image_aumigos ` +
             `FROM adocao_db.aumigos ` +
             `INNER JOIN adocao_db.breed ` +
             `ON adocao_db.aumigos.breed_id_breed = adocao_db.breed.id_breed `+
@@ -172,6 +173,8 @@ router.get('/:id_aumigos', (req, res, next) => {
                     breed: results[0].breed,
                     created_at: results[0].created_at,
                     updated_at: results[0].updated_at,
+                    image_aumigos: results[0].image_aumigos,
+                    
                     request: {
                         method: "GET",
                         description: "SHOW SPECIFY AUMIGO DETAILS",
