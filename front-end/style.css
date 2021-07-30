@@ -2,7 +2,7 @@
     --white: #fff;
     --white-green: #fbfdfa;
     --primary-green: #77C171;
-    --secondary-green: #599155;
+    --secondary-green: #24211F;
     --orange: #F3AD55;
 }
 
@@ -15,11 +15,12 @@
 }
 
 body {
-    background: var(--white-green);
+    background-image: url('./assets/background.svg');
 }
 
-html, body, img{
+html, body{
     max-width: 100%;
+    height: 100%;
 }
 
 a{
@@ -47,6 +48,7 @@ header {
 }
 
 #logo:hover {
+    filter: invert(90%) sepia(14%) saturate(197%) hue-rotate(67deg) brightness(110%) contrast(96%);
     cursor: pointer;
 }
 
@@ -124,8 +126,7 @@ MAIN
 */
 
 main {
-    display: grid;
-    grid-template-areas: "aside section";
+    display: flex;
     color: var(--secondary-green);
     justify-content: center;
     text-align: center;
@@ -134,17 +135,33 @@ main {
 }
 
 aside {
-    width: 40rem;
+    display: flex;
+    justify-content: end;
     margin-left: 6rem;
+    margin-right: 1rem;
+    max-width: 50vw;
 }
 
 section {
-    width: 40rem;
+    max-width: 50vw;
     margin-right: 6rem;
+    margin-left: 1rem;
+
+    display: flex;
+    align-items: flex-start;
+    align-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+aside img {
+    max-width: 50vw;
 }
 
 section p {
-    font-size: 3.5rem;
+    font-size: 2rem;
+    border: none;
 }
 
 
@@ -160,13 +177,15 @@ footer {
     margin-left: 8rem;
     margin-right: 8rem;
     margin-top: 8rem;
+    flex-wrap: wrap;
 }
 
 .dog_img{
     display: flex;
-    width: 15rem;
-    height: 15rem;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+
 }
 
 .dog_container button {
@@ -174,11 +193,18 @@ footer {
     margin-top: 1rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 0.8rem;
 }
 
-@media (max-width: 1000px) {
-    body {
-        font-size: 90%;
+
+@media (max-width: 1024px) {
+    html {
+      font-size: 83.75%; /* Tamanho de 15px */
+      font-size: 1rem;
     }
 
     .search_bar {
@@ -186,16 +212,92 @@ footer {
         visibility: hidden;
         overflow: hidden;
     }
+  }
+  
+
+.button_home {
+    margin-top: 1rem;
+    border: none;
+    border-radius: 2rem;
+    width: 80%;
+    height: 2rem;
+    background: var(--secondary-green);
+    color: var(--white-green);
+    font-size: 1.25rem;
+    line-height: 0.8rem;
 }
 
-@media (max-width: 800px) {
-    body {
-        font-size: 90%;
-    }
+.button_home:hover {
+    background: var(--primary-green);
+    cursor: pointer;
+}
 
+
+
+  /*
+    responsive
+  */
+
+@media (max-width: 920px) {
     #menu {
         display: none;
         visibility: hidden;
         overflow: hidden;
     }
+
+    header, #logo {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+}
+  
+@media (max-width: 740px) {
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 2rem 0 0 0;
+    }
+
+    aside, section, aside img, section p {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+    }
+
+    footer {
+        display: flex;
+        margin: 4rem 0 0 0;
+        justify-content: center;
+
+    }
+
+    .dog_container {
+        margin-right: 2rem;
+        margin-left: 2rem;
+    }
+}
+
+  
+@media (max-width: 540px) { 
+    main, aside, section {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+
+    section {
+        margin-top: 2rem;
+    }
+
+    section p {
+        font-size: 1.5rem;
+    }
+
 }
