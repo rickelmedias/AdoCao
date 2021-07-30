@@ -3,12 +3,15 @@
     --white-green: #fbfdfa;
     --primary-green: #77C171;
     --secondary-green: #599155;
+    --orange: #F3AD55;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    font-family: "Signika", sans-serif;
 }
 
 body {
@@ -17,6 +20,15 @@ body {
 
 html, body, img{
     max-width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: var(--white-green);
+}
+
+a:hover{
+    color: var(--secondary-green);
 }
 
 header {
@@ -34,6 +46,10 @@ header {
     flex-wrap: wrap;
 }
 
+#logo:hover {
+    cursor: pointer;
+}
+
 nav li {
     padding-bottom: 0.75rem;
 }
@@ -49,7 +65,6 @@ nav ul, nav li {
     list-style: none;
 
     font-size: 1.75rem;
-    font-family: "Signika", sans-serif;
     color: var(--white-green);
 }
 
@@ -102,6 +117,64 @@ nav ul, nav li {
     width: 0px;
 }
 
+/*
+
+MAIN
+
+*/
+
+main {
+    display: grid;
+    grid-template-areas: "aside section";
+    color: var(--secondary-green);
+    justify-content: center;
+    text-align: center;
+    margin-top: 5rem;
+    text-align: left;
+}
+
+aside {
+    width: 40rem;
+    margin-left: 6rem;
+}
+
+section {
+    width: 40rem;
+    margin-right: 6rem;
+}
+
+section p {
+    font-size: 3.5rem;
+}
+
+
+/*
+
+FOOTER
+
+*/
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8rem;
+    margin-right: 8rem;
+    margin-top: 8rem;
+}
+
+.dog_img{
+    display: flex;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+}
+
+.dog_container button {
+    display: flex;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 @media (max-width: 1000px) {
     body {
