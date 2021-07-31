@@ -218,9 +218,9 @@ footer {
 .button_home {
     margin-top: 1rem;
     border: none;
-    border-radius: 2rem;
+    border-radius: 1rem;
     width: 80%;
-    height: 2rem;
+    height: 3.5rem;
     background: var(--secondary-green);
     color: var(--white-green);
     font-size: 1.25rem;
@@ -252,7 +252,7 @@ footer {
     }
 
 }
-  
+
 @media (max-width: 740px) {
     main {
         display: flex;
