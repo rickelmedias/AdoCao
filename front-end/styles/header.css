@@ -1,0 +1,175 @@
+:root {
+    --white: #fff;
+    --white-green: #fbfdfa;
+    --primary-green: #77C171;
+    --secondary-green: #43613b;
+    --orange: #F3AD55;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Signika", sans-serif;
+}
+body {
+    background-image: url('../assets/background.svg');
+}
+html, body{
+    max-width: 100%;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+    color: var(--white-green);
+}
+a:hover{
+    color: var(--secondary-green);
+}
+
+/*
+=
+= Header
+=
+*/
+
+header {
+    width: 100%;
+    height: 100px;
+    background: var(--primary-green);
+    display: flex;
+    justify-content: space-between;
+}
+#logo {
+    margin-left: 4rem;
+    width: 6rem;
+    height: 100%;
+    flex-wrap: wrap;
+}
+#logo:hover {
+    filter: invert(90%) sepia(14%) saturate(197%) hue-rotate(67deg) brightness(110%) contrast(96%);
+    cursor: pointer;
+}
+header nav ul, header nav li {
+    flex-wrap: wrap;
+    height: 100%;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+    list-style: none;
+
+    font-size: 1.75rem;
+    color: var(--white-green);
+}
+.separator_nav {
+    border: 0.1rem solid var(--white-green);
+    background: var(--white-green);
+    height: 3rem;
+}
+
+/*
+=
+= Search
+=
+*/
+
+.search_button {
+    width: 4rem;
+}
+.search_button:hover{
+    cursor: pointer;
+}
+.search_bar {    
+    display: flex;
+    align-items: center;
+    margin-right: 4rem;   
+}
+.search_bar button {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    z-index: 20;
+}
+.search_bar:hover .search_text {
+    width: 16rem;
+    padding-left: 2rem;
+    padding-right: 3rem;
+}
+.search_text {
+    z-index: 10;
+    height: 3.25rem;
+    margin-right: -1.5rem;
+    border: none;
+    border-radius: 2rem 0 0 2rem;
+    background: none;
+    outline: none;
+    color: var(--secondary-green);
+    font-weight: 700;
+    background: var(--white);;
+    transition: 0.75s;
+    font-size: 1rem;
+    width: 0px;
+}
+
+/*
+=
+= Animations
+=
+*/
+
+/* Underline styles */
+.underline {
+    display: block;
+    height: 1rem;
+    width: 100%;
+}
+.menu-a {
+    text-decoration: none;
+
+    border: none;
+    border-width: 0rem;
+    
+    transition: border-width 0.4s;
+}
+.menu-a:hover {
+    border-bottom: 0.25rem var(--secondary-green) solid;
+}
+
+
+/*
+=
+= Responsive Web
+=
+*/
+
+@media (max-width: 1024px) {
+    html {
+      font-size: 83.75%; /* Tamanho de 15px */
+      font-size: 1rem;
+    }
+
+    .search_bar {
+        display: none;
+        visibility: hidden;
+        overflow: hidden;
+    }
+
+
+}
+@media (max-width: 920px)  {
+    #menu {
+        display: none;
+        visibility: hidden;
+        overflow: hidden;
+    }
+
+    header, #logo {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+}

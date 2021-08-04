@@ -5,39 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/dog-container.css">
+    <link rel="stylesheet" href="./styles/scrollbar.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <title>AdoCao</title>
 </head>
 
 <body>
     <header>
-        <img id="logo" src="./assets/adocao_logo.svg" alt="Logo do website adocão">
+        <a href="#">
+            <img id="logo" src="./assets/adocao_logo.svg" alt="Logo do website adocão">
+        </a>
         <nav>
             <ul id="menu">
                 <li>
                     <a class="menu-a" href="#">Inicio</a>
                 </li>
 
-                <div class="separator_nav"></div>
+                <hr class="separator_nav">
 
                 <li>
-                    <a class="menu-a" href="#">Sobre</a>
+                    <a class="menu-a" href="./pages/sobre/">Sobre</a>
                 </li>
 
-                <div class="separator_nav"></div>
+                <hr class="separator_nav">
 
                 <li>
-                    <a class="menu-a" href="#">Cachorros</a>
+                    <a class="menu-a" href="./pages/cachorros/">Cachorros</a>
                 </li>
 
-                <div class="separator_nav"></div>
+                <hr class="separator_nav">
 
                 <li>
-                    <a class="menu-a" href="#">Dicas</a>
+                    <a class="menu-a" href="./pages/dicas/">Dicas</a>
                 </li>
 
             </ul>
@@ -59,11 +66,11 @@
 
         <section>
             <p>O intuito desse projeto é ajudar os animais a encontrarem donos que possam dar amor e carinho.</p>
-            <button class="button_home">Conhecer mais sobre...</button>
+            <button onclick="location.href='./pages/sobre'" type="button" class="button_home">Conhecer mais sobre...</button>
         </section>
     </main>
 
-    <footer>
+    <footer class="dog_list">
         <div class="dog_container">
             <img src="./assets/meudog.png" alt="Imagem do cachorro" class="dog_image_container">
             <button class="button_home">Conhecer Aumigo</button>

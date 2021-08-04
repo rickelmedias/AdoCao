@@ -1,0 +1,32 @@
+:root {
+    --white: #fff;
+    --white-green: #fbfdfa;
+    --primary-green-hover: #8cd390;
+    --primary-green: #7bbd75;
+    --secondary-green: #43613b;
+    --secondary-green-hover: #56804e;
+    --orange: #F3AD55;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: var(--primary-green);
+    
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondary-green); 
+    border-radius: 0.25rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-green-hover); 
+  }

@@ -1,0 +1,88 @@
+/*
+=
+= Main
+=
+*/
+
+main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: var(--secondary-green);
+    justify-content: center;
+    text-align: center;
+    margin-top: 5rem;
+    text-align: left;
+}
+aside {
+    display: flex;
+    justify-content: end;
+    margin-left: 6rem;
+    margin-right: 1rem;
+    max-width: 50vw;
+}
+section {
+    display: flex;
+    align-items: flex-start;
+    align-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+section .button_home {
+    height: 3rem;
+    width: 80%;
+}
+section p {
+    font-size: 2rem;
+    border: none;
+}
+aside img {
+    max-width: 50vw;
+    width: 100%;
+}
+
+
+/*
+=
+= Responsive Web
+=
+*/
+
+@media (max-width: 740px)  {
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 2rem 0 0 0;
+    }
+
+    aside, section, aside img, section p {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+@media (max-width: 650px)  { 
+    main, aside, section {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+
+    section {
+        margin-top: 2rem;
+    }
+
+    section p {
+        font-size: 1.5rem;
+    }
+
+}
