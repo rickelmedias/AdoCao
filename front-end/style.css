@@ -1,5 +1,5 @@
 /*
-=
+= CSS
 = General
 =
 */
@@ -273,6 +273,7 @@ footer {
 = Responsive Web
 =
 */
+
 @media (max-width: 1024px) {
     html {
       font-size: 83.75%; /* Tamanho de 15px */
