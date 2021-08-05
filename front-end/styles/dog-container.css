@@ -40,6 +40,8 @@
     justify-content: center;
     align-content: center;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
     border: 0.25rem rgba(255, 255, 255, 0.4) solid;
 }
@@ -70,6 +72,7 @@
 .button_home {
     border: none;
     border-radius: 1rem;
+    margin-top: 0.25rem;
     width: 80%;
     height: 3.5rem;
     background: var(--primary-green);
@@ -95,6 +98,8 @@
     justify-content: center;
     margin-top: 0.5rem;
     text-align: center;
+    font-weight: 600;
+    color: var(--secondary-green);
 }
 
 /*
