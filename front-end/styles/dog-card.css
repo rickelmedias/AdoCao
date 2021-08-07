@@ -1,0 +1,76 @@
+:root {
+    --white: #fff;
+    --white-green: #fbfdfa;
+    --primary-green: #77C171;
+    --secondary-green: #43613b;
+    --orange: #F3AD55;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    padding: 5rem;
+    
+}
+
+.dog_container {
+    
+    width: 60%;
+    height: 80%;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1;
+
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(91, 190, 107, 0.2);
+    border: solid rgba(119, 193, 113, 0.2) 0.20rem;
+    border-radius: 2rem;
+    padding: 1rem;
+
+    flex-wrap: wrap;
+
+}
+
+.dog_image {
+    display: flex;
+    width: 100%;
+    height: 20rem;
+
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.dog_image img {
+    display: flex;
+
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    margin-right: 1rem;
+    border-radius: 100%;
+    border: solid rgba(119, 193, 113, 0.2) 0.20rem;
+}
+
+.dog_infos {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.dog_name {
+    background-color: var(--primary-green);
+    border: solid rgba(32, 51, 30, 0.2) 0.20rem;
+    width: 90%;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+}

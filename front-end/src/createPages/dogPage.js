@@ -34,12 +34,15 @@ async function createDogPage () {
                                 '../../assets/dog_none_photo.jpg';
 
         output  +=          `<div class="dog_container">` +
-                            `<img src="${dog_img}" alt="Imagem do cachorro" class="dog_image_container">` +
-                            `<div class="dog_name"></div>` + 
-                            `<p class="dog_name">${Dog.name}</p>` + 
-                            `<p class="dog_name">${Dog.age}</p>` + 
-                            `<p class="dog_name">${Dog.gender}</p>` + 
-                            `<p class="dog_name">${Dog.breed}</p>` + 
+                            `<aside class="dog_image">` +
+                                `<img src="${dog_img}" alt="Imagem do cachorro" class="dog_image_container">` +
+                            `</aside>` +
+                            `<section class="dog_infos">` +
+                                `<p class="dog_name">Nome: ${Dog.name}</p>` + 
+                                `<p class="dog_name">Idade: ${Dog.age}</p>` + 
+                                `<p class="dog_name">Genero: ${Dog.gender}</p>` + 
+                                `<p class="dog_name">Raça: ${Dog.breed}</p>` + 
+                            `</section>` +
                             `</div>`;
 
     Element.innerHTML = output;
