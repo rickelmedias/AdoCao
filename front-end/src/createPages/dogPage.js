@@ -52,3 +52,12 @@ async function createDogPage () {
 window.onload = function () {
     createDogPage();
 };
+
+window.addEventListener('scroll', () => {
+    const { clienteHeight, scrollHeigth, scrollTop } = document.documentElement;
+    
+    if (scrollTop + clienteHeight >= scrollHeigth - 10) {
+        console.log("Falta 10");
+    }
+    console.log(scrollTop + clienteHeight);
+})

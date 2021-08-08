@@ -146,7 +146,7 @@ router.get('/:id_aumigos', (req, res, next) => {
             `SELECT id_aumigos, name, age, gender, breed, aumigos.created_at, aumigos.updated_at, aumigos.image_aumigos ` +
             `FROM adocao_db.aumigos ` +
             `INNER JOIN adocao_db.breed ` +
-            `ON adocao_db.aumigos.breed_id_breed = adocao_db.breed.id_breed `+
+            `ON adocao_db.aumigos.breed_id_breed = adocao_db.breed.id_breed ` +
             `WHERE adocao_db.aumigos.id_aumigos = ?;`,
             [id],
             function (error, results, field) {
