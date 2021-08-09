@@ -54,7 +54,7 @@ router.get('/', (req, res) => {
                     amount: results.length,
                     aumigos: results.map(aumigos => {
                         return {
-                            id_aumigo: aumigos.id_aumigos,
+                            id_aumigos: aumigos.id_aumigos,
                             name: aumigos.name,
                             request: {
                                 method: 'GET',
@@ -180,7 +180,7 @@ router.get('/id/:id_aumigos', (req, res) => {
                     request: {
                         method: "GET",
                         description: "SHOW SPECIFY AUMIGO DETAILS",
-                        url: "http://localhost:3003/aumigos/" + id
+                        url: "http://localhost:3003/aumigos/id/" + id
                     }
                 }
 
