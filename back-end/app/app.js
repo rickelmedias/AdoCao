@@ -31,7 +31,6 @@ app.use('/breeds', routeBreeds);
 app.use('/aumigos', routeAumigos);
 app.use('/users', routeUsers);
 
-
 // Page not found:
 app.use((req, res, next) => {
     const error = new Error ('Error 404 Not Found');
@@ -46,6 +45,6 @@ app.use( (error, req, res, next) => {
             return: error.message
         }
     })
-})
+});
 
 module.exports = app;

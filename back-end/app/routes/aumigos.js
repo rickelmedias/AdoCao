@@ -34,7 +34,7 @@ const upload = multer({
 });
 
 // SELECT ALL DOGS
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ error: error }) }
 
@@ -72,8 +72,8 @@ router.get('/', (req, res, next) => {
 });
 
 // INSERT DOGS
-router.post('/', upload.single('image-aumigo'), login, (req, res, next) => {
-    
+router.post('/', upload.single('image-aumigo'), login.authorizationRequire, (req, res) => {
+
     const Req = {
         name: req.body.name.trimStart().trimEnd(),
         age: req.body.age,
@@ -138,7 +138,7 @@ router.post('/', upload.single('image-aumigo'), login, (req, res, next) => {
 });
 
 // SELECT DOGS BY ID
-router.get('/:id_aumigos', (req, res, next) => {
+router.get('/id/:id_aumigos', (req, res) => {
     const id = req.params.id_aumigos
 
     mysql.getConnection(function (error, conn) {
@@ -190,8 +190,59 @@ router.get('/:id_aumigos', (req, res, next) => {
     });
 });
 
+// SELECT DOGS BY LETTERS
+router.get('/search/:letters', (req, res) => {
+    const letters = req.params.letters
+    console.log(letters);
+
+    mysql.getConnection(function (error, conn) {
+        if (error) { return res.status(500).send({ error: error }) }
+
+        conn.query(            
+            `SELECT * FROM adocao_db.aumigos WHERE name LIKE "%${letters}%";`,
+            function (error, results, field) {
+                conn.release();
+                console.log(results, "\n");
+
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    });
+                }
+
+                if (results.length == 0) {
+                    return res.status(404).send({
+                        msg: 'Dog not found.'
+                    });
+                }
+
+                const response = {
+                    results,
+                    // id_aumigos: results[0].id_aumigos,
+                    // name: letters,
+                    // age: results[0].age,
+                    // gender: results[0].gender,
+                    // breed: results[0].breed,
+                    // created_at: results[0].created_at,
+                    // updated_at: results[0].updated_at,
+                    // image_aumigos: results[0].image_aumigos,
+                    
+                    request: {
+                        method: "GET",
+                        description: "SHOW SEARCH",
+                        url: "http://localhost:3003/aumigos/search/" + letters
+                    }
+                }
+
+                res.status(200).send(response);
+            }
+        )
+    });
+});
+
 // UPDATE DOGS
-router.patch('/', (req, res, next) => {
+router.patch('/', (req, res) => {
     const Req = {
         id_aumigos: req.body.id_aumigos,
         name: req.body.name.trimStart().trimEnd(),
@@ -250,7 +301,7 @@ router.patch('/', (req, res, next) => {
 });
 
 // DELETE DOGS
-router.delete('/', (req, res, next) => {
+router.delete('/', (req, res) => {
     const Req = {
         id_breed: req.body.id_breed
     };
@@ -295,6 +346,7 @@ router.delete('/', (req, res, next) => {
 
     });
 });
+
 
 
 module.exports = router;
