@@ -11,37 +11,40 @@ async function getDogsFromAPI() {
     }).catch(function(err) { 
         return `${err}`;
     });
-    
+
     await createDogsCards(response.aumigos);
 };
 
 // Get specific Dog
 
 async function getSpecificDogFromAPI(id) {
-    const apiURL = `http://localhost:3003/aumigos/id/${id}`;
-    
-    const response = await fetch(apiURL, {
-        method: 'GET'
-    })
-    .then( (res) => {
-        res = res.json();
-        return res;
-    })
-    .catch((err) => { 
-        console.log(err);
-    });
-    
-    return response;
+
+            const apiURL = `http://localhost:3003/aumigos/id/${id}`;
+            
+            const response = await fetch(apiURL, {
+                method: 'GET'
+            })
+            .then( (res) => {
+                res = res.json();
+                return res;
+            })
+            .catch((err) => { 
+                console.log(err);
+            });
+            
+            return response;
+
 };
 
 // Create cards
 async function createDogsCards(aumigos) {
+    console.log("Exec");
     const Element = document.querySelector(".dog_list");
     const DogsArray = aumigos;
     let output = "";
 
     for (Dog of DogsArray) {
-        const dog_infos     =   await getSpecificDogFromAPI(Dog.id_aumigo);
+        const dog_infos     =   await getSpecificDogFromAPI(Dog.id_aumigos);
         const dog_img       =   dog_infos.image_aumigos != null ? 
                                 `http://localhost:3003/${dog_infos.image_aumigos}` :
                                 '../../assets/dog_none_photo.jpg';
