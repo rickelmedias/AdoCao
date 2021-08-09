@@ -1,6 +1,6 @@
 async function getDogInfos() {
     const id = await window.location.href.split("id=")[1];
-    const apiURL = await `http://localhost:3003/aumigos/${id}`;
+    const apiURL = await `http://localhost:3003/aumigos/id/${id}`;
 
     const response = await fetch(apiURL, {
         method: 'GET'

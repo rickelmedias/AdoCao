@@ -18,7 +18,7 @@ async function getDogsFromAPI() {
 // Get specific Dog
 
 async function getSpecificDogFromAPI(id) {
-    const apiURL = `http://localhost:3003/aumigos/${id}`;
+    const apiURL = `http://localhost:3003/aumigos/id/${id}`;
     
     const response = await fetch(apiURL, {
         method: 'GET'
