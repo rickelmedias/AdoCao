@@ -51,7 +51,7 @@ async function createDogsCards(aumigos) {
 
         output  +=          `<div class="dog_container">` +
                             `<img src="${dog_img}" alt="Imagem do cachorro" class="dog_image_container">` +
-                            `<button class="button_home" value="${Dog.id_aumigo}" onclick="redirectWithId(${Dog.id_aumigo})">Conhecer Aumigo</button>` +
+                            `<button class="button_home" value="${Dog.id_aumigos}" onclick="redirectWithId(${Dog.id_aumigos})">Conhecer Aumigo</button>` +
                             `<p class="dog_name">${dog_infos.name}</p>` + 
                             `</div>`;
     }
