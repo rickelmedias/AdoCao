@@ -4,6 +4,8 @@ const mysql = require('../mysql.js').pool;
 
 const multer = require('multer');
 
+const login = require('../../middleware/login.js');
+
 const storageImage = multer.diskStorage({
     destination: function(req, file, callback) {
         callback(null, './uploads/')
@@ -70,7 +72,7 @@ router.get('/', (req, res, next) => {
 });
 
 // INSERT DOGS
-router.post('/', upload.single('image-aumigo'), (req, res, next) => {
+router.post('/', upload.single('image-aumigo'), login, (req, res, next) => {
     
     const Req = {
         name: req.body.name.trimStart().trimEnd(),
