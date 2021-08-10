@@ -10,15 +10,15 @@
     padding: 1rem;
 
     width: 12vw;
-    min-width: 150px;
-    max-width: 350px;
+    min-width: 200px;
+    max-width: 200px;
 
     height: 30vh;
-    min-height: 250px;
-    max-height: 350px;
+    min-height: 280px;
+    max-height: 300px;
     
     background: rgba(119, 193, 113, 0.2);
-    margin: 2rem;
+    margin: 1rem;
     border-radius: 2rem;
     border: 0.25rem rgba(119, 193, 113, 0.5) solid;
 }
@@ -47,22 +47,16 @@
     border: 0.25rem rgba(255, 255, 255, 0.4) solid;
 }
 
-/*
-=
-= Footer / .dog_list
-=
-*/
-
 .dog_list {
-    display: flex;
-    
-    justify-content: center;
-    margin-left: 8rem;
-    margin-right: 8rem;
-    margin-top: 6rem;
     flex-wrap: wrap;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    height: 100%;
+
+    padding-bottom: 1rem;
+}
 
 /*
 =
@@ -111,7 +105,7 @@
 
 @media (max-width: 1024px) {
     .dog_container {
-        min-height: 200px;
+        min-height: 250px;
         margin-right: 2rem;
         margin-left: 2rem;
     }

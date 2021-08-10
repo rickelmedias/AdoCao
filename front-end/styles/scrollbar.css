@@ -11,22 +11,25 @@
 /* width */
 
 ::-webkit-scrollbar {
+
     width: 10px;
 }
   
   /* Track */
   ::-webkit-scrollbar-track {
     background-color: var(--primary-green);
-    
+
   }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: var(--secondary-green); 
     border-radius: 0.25rem;
+
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-green-hover); 
+
   }

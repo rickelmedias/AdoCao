@@ -38,7 +38,7 @@ async function getSpecificDogFromAPI(id) {
 
 // Create cards
 async function createDogsCards(aumigos) {
-    console.log("Exec");
+
     const Element = document.querySelector(".dog_list");
     const DogsArray = aumigos;
     let output = "";

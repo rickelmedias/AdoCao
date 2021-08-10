@@ -8,7 +8,11 @@
 
     <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="../../styles/scrollbar.css">
-
+    <link rel="stylesheet" href="../../styles/login.css">
+    <link rel="stylesheet" href="../../styles/dog-container.css">
+    <link rel="stylesheet" href="../../styles/pages-body.css">
+    <link rel="stylesheet" href="../../styles/pages-body.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,12 +22,15 @@
 </head>
 
 <body>
+
     <header>
-        <a href="../../">
-            <img id="logo" src="../../assets/adocao_logo.svg" alt="Logo do website adocão">
-        </a>
         <nav>
             <ul id="menu">
+                <li>
+                    <a href="#">
+                            <img id="logo" src="../../assets/adocao_logo.svg" alt="Logo do website adocão">
+                    </a>
+                </li>
                 <li>
                     <a class="menu-a" href="../../">Inicio</a>
 
@@ -60,14 +67,28 @@
     </header>
 
     <main>
-        <label for="">Name</label>
-        <input type="text"></input>
+        <div class="overlay"></div>
+        <section class="modal-log-reg">
+            <aside>
+                <img src="../../assets/meudog.png" alt="" srcset="" id="image-login">
+            </aside>
+            <article>
+                <div class="login-style">
+                    <label for="">Name</label>
+                    <input type="text" placeholder="Username"></input>
+                </div>
+                <div class="pass-style">
+                    <label for="">Password</label>
+                    <input type="password" placeholder="Password"></input>
+                </div>
+                <button class="button_home">Entrar</button>
+            </article>
 
-        <label for="">Password</label>
-        <input type="text"></input>   
+
+        </section>
     </main>
 
-    <footer></footer>
+
 
 </body>
 

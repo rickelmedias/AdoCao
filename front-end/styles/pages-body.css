@@ -1,0 +1,44 @@
+:root {
+    --white: #fff;
+    --white-green: #fbfdfa;
+    --primary-green: #77C171;
+    --secondary-green: #43613b;
+    --orange: #F3AD55;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+
+    overflow: auto;
+
+    font-size: 1em;
+    line-height: 1.4;
+    font-family: "Signika", sans-serif;
+}
+
+body {
+    
+    width: 100%;
+    background-image: url('../assets/background.svg');
+}
+
+a{
+    text-decoration: none;
+    color: var(--white-green);
+}
+
+a:hover{
+    color: var(--secondary-green);
+}
+
+main {
+    padding-top: 8rem;
+}

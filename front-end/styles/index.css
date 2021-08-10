@@ -10,38 +10,48 @@ main {
     color: var(--secondary-green);
     justify-content: center;
     text-align: center;
-    margin-top: 5rem;
+    
     text-align: left;
+    padding: 2rem;
 }
 aside {
     display: flex;
-    justify-content: end;
-    margin-left: 6rem;
-    margin-right: 1rem;
-    max-width: 50vw;
+    justify-content: flex-end;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    
 }
 section {
     display: flex;
     align-items: flex-start;
     align-content: center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     
+    width: 100%;
+    height: 100%;
 }
-section .button_home {
-    height: 3rem;
-    width: 80%;
-}
+
 section p {
     font-size: 2rem;
     border: none;
 }
-aside img {
-    max-width: 50vw;
-    width: 100%;
-}
 
+/*
+=
+= Footer / .dog_list
+=
+*/
+
+footer {
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /*
 =

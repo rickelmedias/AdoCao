@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable=no>
     
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/dog-container.css">
     <link rel="stylesheet" href="./styles/scrollbar.css">
+    <link rel="stylesheet" href="./styles/pages-body.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,11 +21,15 @@
 
 <body>
     <header>
-        <a href="#">
-            <img id="logo" src="./assets/adocao_logo.svg" alt="Logo do website adocão">
-        </a>
+
         <nav>
             <ul id="menu">
+                <li>
+                    <a href="#">
+                            <img id="logo" src="./assets/adocao_logo.svg" alt="Logo do website adocão">
+                    </a>
+                </li>
+                
                 <li>
                     <a class="menu-a" href="#">Inicio</a>
                 </li>
@@ -69,7 +74,7 @@
         </section>
     </main>
 
-    <footer class="dog_list">
+    <footer>
         <div class="dog_container">
             <img src="./assets/meudog.png" alt="Imagem do cachorro" class="dog_image_container">
             <button class="button_home">Conhecer Aumigo</button>

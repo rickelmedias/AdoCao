@@ -3,9 +3,9 @@ const express       = require('express');
 const cors          = require('cors');
 const app           = express();
 
-const routeBreeds = require('./routes/breeds.js');
-const routeAumigos = require('./routes/aumigos.js');
-const routeUsers = require('./routes/users.js');
+const routeBreeds   = require('./routes/breeds.js');
+const routeAumigos  = require('./routes/aumigos.js');
+const routeUsers    = require('./routes/users.js');
 
 // Use:
 app.use(morgan('dev'));

@@ -1,0 +1,132 @@
+main {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 18rem;
+    padding-bottom: 12rem;
+}
+
+.modal-log-reg {
+
+    overflow: hidden;
+    border: solid rgba(41, 71, 39, 0.5) 0.15rem;
+    border-radius: 2rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    width: 70%;
+    height: 60%;
+    
+    max-width: 600px;
+    min-height: 350px;
+
+    background: linear-gradient(45deg, rgba(114, 224, 106, 0.295), rgba(95, 160, 90, 0.274));
+    
+    margin-top: 6rem;
+}
+
+article{
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 50% 50% 0;
+    border-right: solid rgba(41, 71, 39, 0.5) 0.25rem;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-weight: 900;
+    color: rgba(58, 97, 55, 0.8);
+    font-size: 170%;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+input {
+    margin-bottom: 0.5rem;
+    height: 1.5rem;
+    width: 60%;
+    min-width: 200px;
+    padding-bottom: auto;
+    padding-top: auto;
+    padding-left: 1rem;
+    border-radius: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.55);
+    border: solid rgba(41, 71, 39, 0.25) 0.15rem;
+    box-shadow: inset 2px 2px 5px #bdd4b1, inset -5px -5px 10px rgb(236, 255, 232);
+    outline: none;
+    font-size: 95%;
+    font-weight: 600;
+    color: rgba(41, 71, 39, 0.8);
+}
+
+input:focus {
+    box-shadow: inset 2px 2px 2px #c7e7c4, inset -2px -2px 2px rgb(247, 255, 237);
+}
+
+.login-style, .pass-style { 
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.button_home {
+    max-width: 10rem;
+    max-height: 1.5rem;
+}
+
+
+footer {
+    height: 8rem;
+    width: 100%;
+    background: #77C171;
+}
+
+::placeholder {
+    color: #3c5546;
+    letter-spacing: 0.10rem;
+    font-size: 95%;
+    transition: 0.3s all;
+    font-weight: 300;
+}
+ 
+
+@media (max-width: 650px) {
+
+    * {
+        font-size: 95%;
+    }
+
+    input {
+        min-width: 150px;
+    }
+
+    aside img, aside {
+        display: none;
+        visibility: hidden;
+        overflow: hidden;
+    }
+
+    .modal-log-reg {
+        grid-template-columns: 100%;
+        
+    }
+
+
+}
