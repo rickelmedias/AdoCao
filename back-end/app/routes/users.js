@@ -4,6 +4,8 @@ const mysql = require('../mysql.js').pool;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const login = require('../../middleware/login.js');
+
 require('dotenv').config();
 
 const JWT = {
@@ -87,6 +89,14 @@ router.post('/login', (req, res, next) => {
             });
         });
     });
+});
+
+router.post('/login/verify', login.authorizationRequire, (req, res, next) => {
+    const response = {
+        msg: 'Login Verified',
+    }
+
+    return res.status(201).send(response);
 });
 
 module.exports = router;
