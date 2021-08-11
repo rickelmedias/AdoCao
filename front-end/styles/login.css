@@ -28,13 +28,22 @@ main {
     margin-top: 6rem;
 }
 
-article{
+article {
     height: 100%;
     width: 100%;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+article p a {
+    font-size: 1.1rem;
+    color: rgba(41, 71, 39, 0.7);
+}
+
+article p a:hover {
+    color: rgba(41, 71, 39, 1);
 }
 
 aside img {
@@ -56,7 +65,7 @@ label {
 
 input {
     margin-bottom: 0.5rem;
-    height: 1.5rem;
+    height: 1.8rem;
     width: 60%;
     min-width: 200px;
     padding-bottom: auto;
@@ -76,6 +85,11 @@ input:focus {
     box-shadow: inset 2px 2px 2px #c7e7c4, inset -2px -2px 2px rgb(247, 255, 237);
 }
 
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
 .login-style, .pass-style { 
     flex-direction: column;
     display: flex;
@@ -87,6 +101,13 @@ input:focus {
 }
 
 .button_home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem;
+
+    font-size: 5%;
+
     max-width: 10rem;
     max-height: 1.5rem;
 }
@@ -101,12 +122,22 @@ footer {
 ::placeholder {
     color: #3c5546;
     letter-spacing: 0.10rem;
-    font-size: 95%;
+
     transition: 0.3s all;
     font-weight: 300;
 }
- 
 
+.label-h1 {
+    color: #6d9268;
+    font-size: 1rem;
+    
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 @media (max-width: 650px) {
 
     * {

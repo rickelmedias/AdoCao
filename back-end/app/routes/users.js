@@ -22,7 +22,7 @@ router.post('/register', (req, res, next) => {
                 [req.body.login, hash],
                 (error, results) => {
                     conn.release();
-                    if ( error ) { 
+                    if ( error ) {
                         if (error.code === "ER_DUP_ENTRY") {
                             const response = {
                                 error: "User alerady exists"
@@ -57,7 +57,7 @@ router.post('/login', (req, res, next) => {
             conn.release();
 
             if (error) {
-                return res.status(500).send({error: error})
+                return res.status(500).send({error: 'Authentication failed.'})
             }
             if (results.length < 1) {
                 return res.status(401).send({ error: 'Authentication failed.'})

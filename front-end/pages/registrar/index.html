@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="../../styles/login.css">
     <link rel="stylesheet" href="../../styles/dog-container.css">
     <link rel="stylesheet" href="../../styles/pages-body.css">
-    <link rel="stylesheet" href="../../styles/pages-body.css">
+
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap" rel="stylesheet">
     <title>AdoCao</title>
 
-    <script src="../../src/methods/post/register/post_login.js"></script>  
+    <script src="../../src/methods/post/register/post_register.js"></script>
 </head>
 
 <body>
@@ -74,16 +74,16 @@
             </aside>
             <article>
                 <div class="login-style">
-                    <label for="">Login</label>
+                    <label for="">Registre-se</label>
                     <label for="" class="label-h1">Seu Username</label>
-                    <input type="text" placeholder="Username"></input>
+                    <input type="text" placeholder="Username" id="user"></input>
                 </div>
                 <div class="pass-style">
                     <label for="" class="label-h1">Seu Password</label>
-                    <input type="password" placeholder="Password"></input>
+                    <input type="password" placeholder="Password" id="pass"></input>
                 </div>
-                <button class="button_home">Entrar</button>
-                <p><a href="../registrar">Registrar-se</a></p>
+                <button class="button_home" onclick={sendRegister()}>Registrar-se</button>
+                <p><a href="../login">Fazer login</a></p>
             </article>
 
 
