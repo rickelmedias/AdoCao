@@ -81,7 +81,6 @@ async function verifyLogged() {
         .catch( (e) => {
             let error = `${e}`;
                 if (error.toUpperCase() === "ERROR: USER NOT LOGGED"){
-                    console.log("JSON " + false)
                     return false;
                 }else{
                     return true;
@@ -95,8 +94,7 @@ async function verifyLogged() {
 function loginSucess(e, isJson) {
     if (isJson) {
         const res = Array(JSON.parse(e));
-        const privateLocalStorage = localStorage;
-        privateLocalStorage.setItem('token', res[0].token);
+        localStorage.setItem('token', res[0].token);
         location.reload();
     }else{
             alert(e);
@@ -104,10 +102,17 @@ function loginSucess(e, isJson) {
 }
 
 
-window.onload = () => {
-    // if (true) {
-    //     console.log(localStorage.getItem('token'))
-    // }
+window.onload = async () => {
+    const logged = await verifyLogged();
+
+    if (!logged) {
+        if (localStorage.length > 0) {
+            localStorage.clear();
+            console.log('Token removed');
+        }
+    }
+    
+    console.log(logged);
 }
 window.onbeforeunload = function () {
     alert( "Do you really want to close?" );
