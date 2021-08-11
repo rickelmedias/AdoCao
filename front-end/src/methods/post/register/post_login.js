@@ -29,7 +29,7 @@ async function postUser(user, pass) {
                     xhr.onreadystatechange = async () => {
                             if (xhr.readyState === XMLHttpRequest.DONE) {
                                     if (xhr.status === 401) {
-                                        console.log('ACCOUNT AUTH FAILED');
+                                        alert('ACCOUNT AUTH FAILED');
                                     };
 
                                     if (xhr.status === 200) {
@@ -64,6 +64,10 @@ async function verifyLogged() {
         }).then ( 
             (response) => {
                     if (response.status === 401) {
+                        if (localStorage > 0) {
+                            Storage.removeItem('token');
+                            console.log('Token removed');
+                        }
                         throw new Error('User not logged');
                     }else{
                         response => response.json();
@@ -101,7 +105,10 @@ function loginSucess(e, isJson) {
 
 
 window.onload = () => {
-    if (true) {
-        console.log(localStorage.getItem('token'))
-    }
+    // if (true) {
+    //     console.log(localStorage.getItem('token'))
+    // }
 }
+window.onbeforeunload = function () {
+    alert( "Do you really want to close?" );
+};
