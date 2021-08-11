@@ -10,7 +10,6 @@ async function postRegister (user, pass) {
         else
         {
                 let xhr = new XMLHttpRequest();
-
                 
                 const bodyRegister = {
                     login:   `${user}`,
