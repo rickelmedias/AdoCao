@@ -96,7 +96,7 @@ router.post('/login/verify', login.authorizationRequire, (req, res, next) => {
         msg: 'Login Verified',
     }
 
-    return res.status(201).send(response);
+    return res.status(200).send(response);
 });
 
 module.exports = router;
