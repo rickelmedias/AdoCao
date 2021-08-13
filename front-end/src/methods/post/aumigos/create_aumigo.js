@@ -3,6 +3,8 @@ window.onload = async () => {
     const logged = await verifyLogged();
 
     if (logged) {
-        
+        console.log('On');
+    }else{
+        console.log('Off');
     }
 }

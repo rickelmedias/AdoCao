@@ -62,14 +62,15 @@ async function verifyLogged() {
                 "Authorization": "Bearer " + token
             }
         }).then ( 
-            (response) => {
+            async (response) => {
                     if (response.status === 401) {
                         if (localStorage > 0) {
                             Storage.removeItem('token');
                         }
                         throw new Error('User not logged');
                     }else{
-                        response => response.json();
+                        response = await response.json();
+                        return response;
                     }
         })
         .then( async (json) => { 
@@ -79,9 +80,11 @@ async function verifyLogged() {
         })
         .catch( (e) => {
             let error = `${e}`;
+            console.log(error);
                 if (error.toUpperCase() === "ERROR: USER NOT LOGGED"){
                     return false;
                 }else{
+                    console.log(error)
                     return true;
                 }
             }
@@ -90,10 +93,10 @@ async function verifyLogged() {
     return await isLogged;
 }
 
-function loginSucess(e, isJson) {
+async function loginSucess(e, isJson) {
     if (isJson) {
-        const res = Array(JSON.parse(e));
-        localStorage.setItem('token', res[0].token);
+        const res = await Array(JSON.parse(e));
+        await localStorage.setItem('token', res[0].token);
         location.reload();
     }else{
             alert(e);
