@@ -39,7 +39,7 @@ async function postUser(user, pass) {
                     };
                 }
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
             
     }
@@ -66,7 +66,6 @@ async function verifyLogged() {
                     if (response.status === 401) {
                         if (localStorage > 0) {
                             Storage.removeItem('token');
-                            console.log('Token removed');
                         }
                         throw new Error('User not logged');
                     }else{
@@ -103,16 +102,14 @@ function loginSucess(e, isJson) {
 
 
 window.onload = async () => {
+    /* Check if user is logged */
     const logged = await verifyLogged();
 
     if (!logged) {
         if (localStorage.length > 0) {
             localStorage.clear();
-            console.log('Token removed');
         }
     }
-    
-    console.log(logged);
 }
 window.onbeforeunload = function () {
     alert( "Do you really want to close?" );
