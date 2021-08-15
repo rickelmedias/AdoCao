@@ -2,9 +2,16 @@
 <html lang="en">
 
 <head>
+
+    <title>AdoCao</title>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="../../styles/scrollbar.css">
@@ -13,12 +20,8 @@
     <link rel="stylesheet" href="../../styles/pages-body.css">
 
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap" rel="stylesheet">
-    <title>AdoCao</title>
-
     <script src="../../src/methods/post/register/post_register.js"></script>
+
 </head>
 
 <body>
@@ -28,9 +31,10 @@
             <ul id="menu">
                 <li>
                     <a href="#">
-                            <img id="logo" src="../../assets/adocao_logo.svg" alt="Logo do website adocão">
+                        <img id="logo" src="../../assets/adocao_logo.svg" alt="Logo do website adocão">
                     </a>
                 </li>
+
                 <li>
                     <a class="menu-a" href="../../">Inicio</a>
 
@@ -63,34 +67,34 @@
                 </li>
             </ul>
         </nav>
-
     </header>
 
     <main>
         <div class="overlay"></div>
         <section class="modal-log-reg">
+
             <aside>
                 <img src="../../assets/meudog.png" alt="" srcset="" id="image-login">
             </aside>
+            
             <article>
                 <div class="login-style">
                     <label for="">Registre-se</label>
                     <label for="" class="label-h1">Seu Username</label>
                     <input type="text" placeholder="Username" id="user"></input>
                 </div>
+
                 <div class="pass-style">
                     <label for="" class="label-h1">Seu Password</label>
                     <input type="password" placeholder="Password" id="pass"></input>
                 </div>
+
                 <button class="button_home" onclick={sendRegister()}>Registrar-se</button>
                 <p><a href="../login">Fazer login</a></p>
             </article>
 
-
         </section>
     </main>
-
-
 
 </body>
 

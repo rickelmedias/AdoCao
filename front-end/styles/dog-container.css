@@ -63,7 +63,19 @@
 = Button Customs
 =
 */
+.dog_button {
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
 
+.dog_button .button_home {
+    width: 20%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
 .button_home {
     border: none;
     border-radius: 1rem;

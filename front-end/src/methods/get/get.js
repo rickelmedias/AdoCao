@@ -60,6 +60,6 @@ async function createDogsCards(aumigos) {
 
 }
 
-window.onload = function () {
-    getDogsFromAPI();
-};
+// window.onload = function () {
+//     getDogsFromAPI();
+// };
