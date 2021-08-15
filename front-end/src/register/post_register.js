@@ -43,8 +43,6 @@ async function postRegister (user, pass) {
 async function sendRegister() {
     const user = await document.getElementById("user").value;
     const pass = await document.getElementById("pass").value;
-
-
     await postRegister(user, pass);
 }
 
@@ -58,8 +56,4 @@ function errorToRegister(e, isJson) {4
     }else{
             alert(e); 
     }
-
-
-
-
 }

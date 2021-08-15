@@ -1,13 +1,13 @@
 let lastInputValue = "";
 
-async function checkValueSearch  (i) {
+async function checkValueSearch (i) {
     inputValue = i.trimStart().trimEnd();
 
     if (lastInputValue != inputValue) {
         lastInputValue = inputValue;
         
         if (inputValue == "") {
-            getDogsFromAPI();
+            getDogsFromApiAndCreateCards();
         }
         else {
             try {
@@ -27,7 +27,7 @@ async function checkValueSearch  (i) {
                     await createDogsCards(response.results);
                     }
             catch(err) {
-                // console.log(e);
+                console.log(e);
             }
         }
     }

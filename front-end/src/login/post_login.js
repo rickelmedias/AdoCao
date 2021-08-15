@@ -1,3 +1,14 @@
+window.onload = async () => {
+    /* Check if user is logged */
+    const logged = await verifyLogged();
+
+    if (!logged) {
+        if (localStorage.length > 0) {
+            localStorage.clear();
+        }
+    }
+}
+
 async function postUser(user, pass) {
     const logged = await verifyLogged();
 
@@ -53,45 +64,6 @@ async function sendLogin() {
     await postUser(user, pass);
 }
 
-async function verifyLogged() {
-    const token = localStorage.getItem('token');
-
-    const isLogged = await fetch("http://localhost:3003/users/login/verify", {
-            method: "POST",
-            headers: {
-                "Authorization": "Bearer " + token
-            }
-        }).then ( 
-            async (response) => {
-                    if (response.status === 401) {
-                        if (localStorage > 0) {
-                            Storage.removeItem('token');
-                        }
-                        throw new Error('User not logged');
-                    }else{
-                        response = await response.json();
-                        return response;
-                    }
-        })
-        .then( async (json) => { 
-            if (json.msg.toUpperCase() === "LOGIN VERIFIED") {
-                return true;
-            };
-        })
-        .catch( (e) => {
-            let error = `${e}`;
-            console.log(error);
-                if (error.toUpperCase() === "ERROR: USER NOT LOGGED"){
-                    return false;
-                }else{
-                    console.log(error)
-                    return true;
-                }
-            }
-        )
-
-    return await isLogged;
-}
 
 async function loginSucess(e, isJson) {
     if (isJson) {
@@ -102,18 +74,3 @@ async function loginSucess(e, isJson) {
             alert(e);
     }
 }
-
-
-window.onload = async () => {
-    /* Check if user is logged */
-    const logged = await verifyLogged();
-
-    if (!logged) {
-        if (localStorage.length > 0) {
-            localStorage.clear();
-        }
-    }
-}
-window.onbeforeunload = function () {
-    alert( "Do you really want to close?" );
-};
