@@ -13,11 +13,11 @@ window.onload = async () => {
 
 function buttonToCreateDogs() {
     const Element           = document.querySelector(".dog_button");
-    let output_to_html      =           `<button class="button_home" onclick="location.href = './cadastro'">` +
+    let output_to_html      =           `<button class="button_home" onclick="Redirect.toRoom('cadastro')">` +
                                             `Adicionar um novo cachorro` +
                                         `</button>` + 
 
-                                        `<button class="button_home" onclick="location.href = './minha_lista'">` +
+                                        `<button class="button_home" onclick="Redirect.toRoom('minha_lista')">` +
                                             `Minha lista de cachorros` +
                                         `</button>`;
 

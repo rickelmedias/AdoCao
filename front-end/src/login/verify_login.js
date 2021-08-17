@@ -1,4 +1,3 @@
-
 async function verifyLogged() {
     const token = localStorage.getItem('token');
 
