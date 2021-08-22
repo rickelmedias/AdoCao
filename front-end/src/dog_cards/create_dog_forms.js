@@ -13,4 +13,7 @@ function sendPostNewDog(e) {
     e.preventDefault();
     const formData      = new FormData(e.target);
     postFormData(formData, localStorage.getItem('token'));
+    
+    // e.reset();
+    Redirect.toRoom('..');
 };

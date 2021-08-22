@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>AdoCao</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link rel="stylesheet" href="../../../../styles/header.css">
+    <link rel="stylesheet" href="../../../../styles/scrollbar.css">
+    <link rel="stylesheet" href="../../../../styles/dog_card.css">
+    <link rel="stylesheet" href="../../../../styles/pages_body.css">
+    <link rel="stylesheet" href="../../../../styles/dog_container.css">
+    <link rel="stylesheet" href="../../../../styles/dog_forms.css">
+    
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul id="menu">
+                <li>
+                    <a href="#">
+                            <img id="logo" src="../../../../assets/adocao_logo.svg" alt="Logo do website adocão">
+                    </a>
+                </li>
+
+                <li>
+                    <a class="menu-a" href="../../../../">Inicio</a>
+                </li>
+
+                <hr class="separator_nav"></hr>
+
+                <li>
+                    <a class="menu-a" href="../../../sobre/">Sobre</a>
+                </li>
+
+                <hr class="separator_nav"></hr>
+
+                <li>
+                    <a class="menu-a" href="../../../cachorros/">Cachorros</a>
+                </li>
+
+                <hr class="separator_nav"></hr>
+
+                <li>
+                    <a class="menu-a" href="../../../dicas/">Dicas</a>
+                </li>
+                
+                <hr class="separator_nav"></hr>
+
+                <li>
+                    <a class="menu-a" href="../../../login/">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form method="post" class="my_dog_forms" onsubmit="postBreeds(event)">
+                <label for="breed">Nome da Raça</label>
+                <input type="text" name="breed" id="breed" minlength="2" maxlength="32" required>
+        
+                <button type="submit" class="button_home">Confirmar Criação</button>
+        </form>
+    </main>
+
+    <footer>
+    </footer>
+
+
+    <script src="../../../../src/login/verify_login.js"></script>
+    <script src="../../../../src/dog_cards/post_dogs/post_dogs.js"></script>
+    <script src="../../../../src/dog_cards/post_breed/post_breed.js"></script>
+    <script src="../../../../src/utils/redirection.js"></script>
+</body>
+
+</html>
