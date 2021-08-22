@@ -74,14 +74,12 @@ router.get('/', (req, res) => {
 // INSERT DOGS
 
 router.post('/', upload.single('image-aumigo'), login.authorizationRequire, (req, res) => {
-    console.log(req, "\n\n\n", req.body.name, "\n\n\n", req.body.age, "\n\n\n", req.body.gender, "\n\n\n", req.body.breed_id_breed,  "\n\n\n", req.file);
-
     const Req = {
         name: req.body.name.trimStart().trimEnd(),
         age: req.body.age,
         gender: req.body.gender.toUpperCase().charAt(0),
         breed_id_breed: req.body.breed_id_breed,
-        file: req.file.path
+        file: req.file === undefined ? null : req.file.path
     }
 
     mysql.getConnection(function (error, conn) {

@@ -65,21 +65,26 @@
     </header>
 
     <main>
-        <form method="post" enctype="multipart/form-data" class="my_dog_forms">
+        <form method="post" enctype="multipart/form-data" class="my_dog_forms" onsubmit="sendPostNewDog(event)">
                 <label for="image-aumigo">Foto Cachorro</label>
                 <input type="file" name="image-aumigo" id="image-aumigo" accept="image/png, image/jpeg">
 
                 <label for="name">Nome do Cachorro</label>
-                <input type="text" name="name" id="name" placeholder="Coloque o nome do cachorro aqui.">
+                <input type="text" name="name" id="name" placeholder="Coloque o nome do cachorro aqui." maxlength="45" minlength="2" required>
             
                 <label for="age">Idade do Cachorro</label>
-                <input type="text" name="age" id="age" placeholder="Coloque a idade do cachorro aqui.">
-            
+                <input type="number" name="age" id="age" placeholder="Coloque a idade do cachorro aqui." required min="0" step="1">
+                
                 <label for="gender">Genero do Cachorro</label>
-                <input type="text" name="gender" id="gender" placeholder="Selecione o genero do cachorro.">
-            
+                <select name="gender" id="gender" required>
+                    <option value="Male">Menino</option>
+                    <option value="Female">Menina</option>
+                </select>
+                
                 <label for="breed_id_breed">Raça do Cachorro</label>
-                <input type="text" name="breed_id_breed" id="breed_id_breed" placeholder="Selecione a raça do cachorro.">
+                <select name="breed_id_breed" id="breed_id_breed" required>
+
+                </select>
         
                 <button type="submit" class="button_home">Confirmar Criação</button>
         </form>
@@ -91,6 +96,7 @@
 
     <script src="../../../src/login/verify_login.js"></script>
     <script src="../../../src/dog_cards/post_dogs/post_dogs.js"></script>
+    <script src="../../../src/dog_cards/get_breeds/get_breeds.js"></script>
     <script src="../../../src/dog_cards/create_dog_forms.js"></script>
 </body>
 
