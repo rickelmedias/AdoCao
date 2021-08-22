@@ -5,7 +5,6 @@
 
     <title>AdoCao</title>
 
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,10 +18,7 @@
     <link rel="stylesheet" href="../../../styles/dog_card.css">
     <link rel="stylesheet" href="../../../styles/pages_body.css">
     <link rel="stylesheet" href="../../../styles/dog_container.css">
-
-
-    <script src="../../../src/login/verify_login.js"></script>
-    <script src="../../../src/dog_cards/create_dog_forms.js"></script>
+    <link rel="stylesheet" href="../../../styles/dog_forms.css">
     
 </head>
 
@@ -41,25 +37,25 @@
                     <a class="menu-a" href="../../../">Inicio</a>
                 </li>
 
-                <hr class="separator_nav">
+                <hr class="separator_nav"></hr>
 
                 <li>
                     <a class="menu-a" href="../../sobre/">Sobre</a>
                 </li>
 
-                <hr class="separator_nav">
+                <hr class="separator_nav"></hr>
 
                 <li>
                     <a class="menu-a" href="../../cachorros/">Cachorros</a>
                 </li>
 
-                <hr class="separator_nav">
+                <hr class="separator_nav"></hr>
 
                 <li>
                     <a class="menu-a" href="../../dicas/">Dicas</a>
                 </li>
                 
-                <hr class="separator_nav">
+                <hr class="separator_nav"></hr>
 
                 <li>
                     <a class="menu-a" href="../../login/">Login</a>
@@ -69,16 +65,33 @@
     </header>
 
     <main>
-        <div class="dog_forms">
+        <form method="post" enctype="multipart/form-data" class="my_dog_forms">
+                <label for="image-aumigo">Foto Cachorro</label>
+                <input type="file" name="image-aumigo" id="image-aumigo" accept="image/png, image/jpeg">
+
+                <label for="name">Nome do Cachorro</label>
+                <input type="text" name="name" id="name" placeholder="Coloque o nome do cachorro aqui.">
             
+                <label for="age">Idade do Cachorro</label>
+                <input type="text" name="age" id="age" placeholder="Coloque a idade do cachorro aqui.">
             
+                <label for="gender">Genero do Cachorro</label>
+                <input type="text" name="gender" id="gender" placeholder="Selecione o genero do cachorro.">
             
-        </div>
+                <label for="breed_id_breed">Raça do Cachorro</label>
+                <input type="text" name="breed_id_breed" id="breed_id_breed" placeholder="Selecione a raça do cachorro.">
+        
+                <button type="submit" class="button_home">Confirmar Criação</button>
+        </form>
     </main>
 
     <footer>
     </footer>
 
+
+    <script src="../../../src/login/verify_login.js"></script>
+    <script src="../../../src/dog_cards/post_dogs/post_dogs.js"></script>
+    <script src="../../../src/dog_cards/create_dog_forms.js"></script>
 </body>
 
 </html>

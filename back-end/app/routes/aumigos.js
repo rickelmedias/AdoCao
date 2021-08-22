@@ -72,7 +72,9 @@ router.get('/', (req, res) => {
 });
 
 // INSERT DOGS
+
 router.post('/', upload.single('image-aumigo'), login.authorizationRequire, (req, res) => {
+    console.log(req, "\n\n\n", req.body.name, "\n\n\n", req.body.age, "\n\n\n", req.body.gender, "\n\n\n", req.body.breed_id_breed,  "\n\n\n", req.file);
 
     const Req = {
         name: req.body.name.trimStart().trimEnd(),

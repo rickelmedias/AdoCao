@@ -1,4 +1,4 @@
-const morgan        = require('morgan');
+// const morgan        = require('morgan');
 const express       = require('express');
 const cors          = require('cors');
 const app           = express();
@@ -8,7 +8,7 @@ const routeAumigos  = require('./routes/aumigos.js');
 const routeUsers    = require('./routes/users.js');
 
 // Use:
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());

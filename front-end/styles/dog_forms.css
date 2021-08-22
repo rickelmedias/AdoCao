@@ -1,0 +1,28 @@
+input {
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+    background-color: rgb(51, 126, 76);
+    
+    border: none;
+    border-radius: 1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 2rem;
+    color: white;
+    
+    caret-color: rgb(100, 233, 59);
+
+}
+input::placeholder {
+    color: rgb(211, 235, 174);
+}
+
+
+label {
+    font-size: 1.5rem;
+    
+}
+.my_dog_forms {
+    text-align: center;
+
+}
