@@ -67,7 +67,19 @@
     <main>
         <form method="post" enctype="multipart/form-data" class="my_dog_forms" onsubmit="sendPostNewDog(event)">
                 <label for="image-aumigo">Foto Cachorro</label>
-                <input type="file" name="image-aumigo" id="image-aumigo" accept="image/png, image/jpeg">
+                
+                <div id="container_photo">
+                    <div>
+                        <div id="picture_container">
+                            <img src="../../../assets/dog_none_photo.jpg" alt="" srcset="" id="picture_currently">
+                        </div>
+                    </div>
+
+                    <div class="button_home">
+                        <p id="texto">Buscar Fotos</p>
+                        <input type="file" name="image-aumigo" id="image-aumigo" accept="image/png, image/jpeg" onchange="updateImageChange(event);">
+                    </div>
+                </div>
 
                 <label for="name">Nome do Cachorro</label>
                 <input type="text" name="name" id="name" placeholder="Coloque o nome do cachorro aqui." maxlength="45" minlength="2" required>

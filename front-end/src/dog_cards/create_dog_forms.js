@@ -12,8 +12,21 @@ window.onload = async () => {
 function sendPostNewDog(e) {
     e.preventDefault();
     const formData      = new FormData(e.target);
-    postFormData(formData, localStorage.getItem('token'));
     
-    // e.reset();
+    console.log(formData.getAll('image-aumigo'))
+    postFormData(formData, localStorage.getItem('token'));
+
     Redirect.toRoom('..');
 };
+
+
+function updateImageChange(e) {
+    e.preventDefault();
+    const image = document.querySelector('img#picture_currently');
+    
+    const [File] = e.target.files;
+
+    if (File) {
+        image.src = URL.createObjectURL(File);
+    }
+}

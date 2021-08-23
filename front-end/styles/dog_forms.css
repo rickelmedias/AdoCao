@@ -1,0 +1,53 @@
+#container_photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 350px;
+}
+
+#picture_container {
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+#picture_currently { 
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#image-aumigo {
+    display: hidden;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+#texto {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+}
+
+.button_home { 
+    padding: 0;
+    margin: 0;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+input::-webkit-file-upload-button {
+    background-color: yellowgreen;
+    border: none;
+}
