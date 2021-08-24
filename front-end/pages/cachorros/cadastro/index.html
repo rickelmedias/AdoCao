@@ -66,39 +66,47 @@
 
     <main>
         <form method="post" enctype="multipart/form-data" class="my_dog_forms" onsubmit="sendPostNewDog(event)">
-                <label for="image-aumigo">Foto Cachorro</label>
-                
-                <div id="container_photo">
-                    <div>
-                        <div id="picture_container">
-                            <img src="../../../assets/dog_none_photo.jpg" alt="" srcset="" id="picture_currently">
+            <div id="col1_image">
+                        <label for="image-aumigo">Foto Cachorro</label>
+                        <div id="cutter_container">
+                                <img src="../../../assets/dog_none_photo.jpg" alt="" srcset="" id="picture_preview" draggable="false">
                         </div>
-                    </div>
+                        
+                        <input type="range" name="slider_x" id="slider_x">
+                        <input type="range" name="slider_y" id="slider_y">
+                        <input type="range" name="slider_zoom" id="slider_zoom">
 
-                    <div class="button_home">
-                        <p id="texto">Buscar Fotos</p>
-                        <input type="file" name="image-aumigo" id="image-aumigo" accept="image/png, image/jpeg" onchange="updateImageChange(event);">
-                    </div>
-                </div>
-
-                <label for="name">Nome do Cachorro</label>
-                <input type="text" name="name" id="name" placeholder="Coloque o nome do cachorro aqui." maxlength="45" minlength="2" required>
-            
-                <label for="age">Idade do Cachorro</label>
-                <input type="number" name="age" id="age" placeholder="Coloque a idade do cachorro aqui." required min="0" step="1">
-                
-                <label for="gender">Genero do Cachorro</label>
-                <select name="gender" id="gender" required>
-                    <option value="Male">Menino</option>
-                    <option value="Female">Menina</option>
-                </select>
-                
-                <label for="breed_id_breed">Raça do Cachorro</label>
-                <select name="breed_id_breed" id="breed_id_breed" required>
-                </select>
-                <p>Sua raça não existe? <a href="./raca">Clique aqui e crie agora!</a></p>
-        
-                <button type="submit" class="button_home">Confirmar Criação</button>
+                        <div id="buttons_files">
+                            <div class="button_home" id="button_crop"><p>Cortar Imagem</p></div>
+                            <div class="button_home" onclick="document.getElementById('image-aumigo').click()"> <p>Buscar Fotos</p>
+                                    <input type="file" name="image-aumigo" id="image-aumigo" accept="image/png, image/jpeg" onchange="updateImageChange(event);">
+                            </div>
+                        </div>
+            </div>
+            <div id="col2_infos">
+                        <label for="name">Nome do Cachorro</label>
+                        <input type="text" name="name" id="name" placeholder="Coloque o nome do cachorro aqui." maxlength="45" minlength="2" required>
+                    
+                        <label for="age">Idade do Cachorro</label>
+                        <input type="number" name="age" id="age" placeholder="Coloque a idade do cachorro aqui." required min="0" step="1">
+                        
+                        <label for="gender">Genero do Cachorro</label>
+                        <select name="gender" id="gender" required>
+                                <option value="Male">Menino</option>
+                                <option value="Female">Menina</option>
+                        </select>
+                        
+                        <label for="breed_id_breed">Raça do Cachorro</label>
+                        <select name="breed_id_breed" id="breed_id_breed" required>
+                        </select>
+                        <p>Sua raça não existe? <a href="./raca">Clique aqui e crie agora!</a></p>
+            </div>
+            <div id="col1_button_confirm">
+                        <button type="submit" class="button_home"><p>Confirmar Criação</p></button>
+            </div>
+            <div id="col2_button_cancel">
+                        <div class="button_home" onclick="Redirect.toRoom('./../')"><p>Cancelar</p></div>
+            </div>
         </form>
     </main>
 

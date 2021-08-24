@@ -1,53 +1,95 @@
-#container_photo {
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+#cutter_container {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    width: 300px;
+    background: grey;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+/**/
+main {
+    margin: 0 auto;
+    animation: up 0.4s 0.2s backwards;
+
+    display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 350px;
 }
 
-#picture_container {
-    width: 150px;
-    height: 150px;
-    border-radius: 10%;
-    overflow: hidden;
+.my_dog_forms {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 2;
 }
 
-#picture_currently { 
-    object-fit: cover;
+#col1_image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttons_files {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     width: 100%;
-    height: 100%;
 }
+#buttons_files .button_home {
+    width: 40%;
+    text-align: center;
+
+}
+
+#col1_button_confirm, #col2_button_cancel{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#picture_preview {
+    position: absolute;
+    transform-origin: center;
+    /* transform: translateX(-10rem);
+    transform: translateY(-10rem); */
+}
+
+
+
+/* Image Preview */
 
 #image-aumigo {
-    display: hidden;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    cursor: pointer;
+    display: none;
 }
-
-#texto {
-    position: absolute;
-    overflow: hidden;
+.button_home p {
     width: 100%;
 }
-
-.button_home { 
-    padding: 0;
-    margin: 0;
-    position: relative;
-
+.button_home {
     display: flex;
     align-items: center;
     justify-items: center;
     text-align: center;
+    width: 50%;
 }
 
-input::-webkit-file-upload-button {
-    background-color: yellowgreen;
-    border: none;
+/* Selection Tool */
+#selection_tool {
+    position: fixed;
+    display: none;
+    border: 2px dashed blue;
 }
