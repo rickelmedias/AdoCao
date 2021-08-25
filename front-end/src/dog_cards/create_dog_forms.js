@@ -12,13 +12,16 @@ window.onload = async () => {
 function sendPostNewDog(e) {
     e.preventDefault();
     const formData      = new FormData(e.target);
-    
-    console.log(formData.getAll('image-aumigo'))
     postFormData(formData, localStorage.getItem('token'));
-
-    Redirect.toRoom('..');
+    Redirect.toRoom('..');    
+    // console.log(formData.getAll('image-aumigo'))
 };
 
+let ableToCut = false;
+let buttonCut = document.querySelector('div#button_crop');
+
+let canvas  = document.createElement('canvas');
+let ctx     = canvas.getContext('2d'); 
 
 let imagePreview = document.querySelector('img#picture_preview');
 
@@ -26,47 +29,27 @@ let SliderElementX = document.getElementById('slider_x');
 let SliderElementY = document.getElementById('slider_y');
 let SliderElementZoom = document.getElementById('slider_zoom');
 
-let cutterPreview = document.getElementById('cutter_container');
+let cutterPreview = document.querySelector('div#cutter_container');
+let cutterPreviewW = document.querySelector('div#cutter_container').offsetWidth;
+let cutterPreviewH = document.querySelector('div#cutter_container').offsetHeight;
 
 let imageHeight = 0;
 let imageWidth = 0;
+let x,y,z;
 
-imagePreview.onload = function(){
-    imageHeight = imagePreview.height;
-    imageWidth = imagePreview.width;
-    console.log(imageHeight, imageWidth);
-    // code here to use the dimensions
+function buttonCropClick() {
+    ableToCut = !ableToCut;
     
-    SliderElementX.min = 0;
-    SliderElementX.max = imageWidth-300;
-    SliderElementX.value = 0;
-
-    SliderElementY.min = 0;
-    SliderElementY.max = imageHeight-300;
-    SliderElementY.value = 0;
-
-    // SliderElementZoom.min = 0;
-    // SliderElementZoom.max = imageHeight-300;
-    // SliderElementZoom.value = 0;
+    if (ableToCut) {
+        SliderElementX.style.display = 'flex';
+        SliderElementY.style.display = 'flex';
+        SliderElementZoom.style.display = 'flex';
+    }else{
+        SliderElementX.style.display = 'none';
+        SliderElementY.style.display = 'none';
+        SliderElementZoom.style.display = 'none';
+    }
 }
-
-let x = 0; let y = 0;
-
-SliderElementX.oninput = function() {
-    x = -(SliderElementX.value)+(imageWidth/2)-(150);
-    console.log(x);
-    defineTransform(x, y);
-}
-SliderElementY.oninput = function() {
-    y = -(SliderElementY.value)+(imageHeight/2)-(150);
-    console.log(y);
-    defineTransform(x, y);
-}
-
-function defineTransform(x, y) {
-    picture_preview.style.transform = `translate(${x}px,${y}px)`;
-}
-
 
 function updateImageChange(e) {
     e.preventDefault();
@@ -78,6 +61,53 @@ function updateImageChange(e) {
     }
 }
 
+imagePreview.onload = function(){
+    imageHeight = imagePreview.height;
+    imageWidth = imagePreview.width;
+    SliderElementX.value = 0;
+    SliderElementY.value = 0;
+    SliderElementZoom.min = 0.5;
+    SliderElementZoom.max = 1.5;
+    SliderElementZoom.value = ((SliderElementZoom.min)+(SliderElementZoom.max) ) / 2;
+    
+    SliderElementX.min = 0;
+    SliderElementY.min = 0;
+    
+    SliderElementX.max = ((imageWidth  -  cutterPreviewW));
+    SliderElementY.max = ((imageHeight -  cutterPreviewW));
+    
+    SliderElementZoom.step = 0.01;
+    
+    x = SliderElementX.value; y = SliderElementY.value;
+    z = SliderElementZoom.value;
+    defineTransform(x, y, z);
+
+    canvas.width  = imagePreview.width;
+    canvas.height = imagePreview.height;
+    
+    ctx.clearRect(0, 0, imagePreview.width, imagePreview.height);
+    ctx.drawImage(imagePreview, 0, 0);
+}
+
+SliderElementX.oninput = function() {
+    x = -(SliderElementX.value)+(imageWidth/2)-(cutterPreviewW/2);
+    defineTransform(x, y, z);
+}
+
+SliderElementY.oninput = function() {
+    y = -(SliderElementY.value)+(imageHeight/2)-(cutterPreviewH/2);
+    defineTransform(x, y, z);
+}
+
+SliderElementZoom.oninput = function() {
+    z = (SliderElementZoom.value);
+    defineTransform(x, y, z);
+}
+
+function defineTransform(x, y, z) {
+    // console.table([x, y, z]);
+    picture_preview.style.transform = `translate(${x}px,${y}px) scale(${z})`
+}
 
 
 

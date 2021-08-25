@@ -68,7 +68,7 @@
         <form method="post" enctype="multipart/form-data" class="my_dog_forms" onsubmit="sendPostNewDog(event)">
             <div id="col1_image">
                         <label for="image-aumigo">Foto Cachorro</label>
-                        <div id="cutter_container">
+                        <div id="cutter_container" width="300" heigth="300">
                                 <img src="../../../assets/dog_none_photo.jpg" alt="" srcset="" id="picture_preview" draggable="false">
                         </div>
                         
@@ -77,7 +77,7 @@
                         <input type="range" name="slider_zoom" id="slider_zoom">
 
                         <div id="buttons_files">
-                            <div class="button_home" id="button_crop"><p>Cortar Imagem</p></div>
+                            <div class="button_home" onclick="buttonCropClick()" id="button_crop"><p>Cortar Imagem</p></div>
                             <div class="button_home" onclick="document.getElementById('image-aumigo').click()"> <p>Buscar Fotos</p>
                                     <input type="file" name="image-aumigo" id="image-aumigo" accept="image/png, image/jpeg" onchange="updateImageChange(event);">
                             </div>
