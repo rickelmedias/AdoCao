@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 1rem;
 }
 /**/
 main {
@@ -65,8 +65,6 @@ main {
 #picture_preview {
     position: absolute;
     transform-origin: center;
-    /* transform: translateX(-10rem);
-    transform: translateY(-10rem); */
 }
 
 
