@@ -68,10 +68,7 @@
         <form method="post" enctype="multipart/form-data" class="my_dog_forms" onsubmit="sendPostNewDog(event)">
             <div id="col1_image">
                         <label for="image-aumigo">Foto Cachorro</label>
-                        <div id="cutter_container" width="300" heigth="300">
-                                <img src="../../../assets/dog_none_photo.jpg" alt="" srcset="" id="picture_preview" draggable="false">
-                        </div>
-                        
+                        <canvas id="cutter_container"></canvas>
                         <input type="range" name="slider_x" id="slider_x">
                         <input type="range" name="slider_y" id="slider_y">
                         <input type="range" name="slider_zoom" id="slider_zoom">

@@ -20,28 +20,23 @@ function sendPostNewDog(e) {
 let ableToCut = true;
 let buttonCut = document.querySelector('div#button_crop');
 
-let canvas  = document.getElementById('cutter_container');
-canvas.width = 300;
-canvas.height = 300;
-let canvasWidth = canvas.width;
-let canvasHeight = canvas.height;
-
+let canvas  = document.createElement('canvas');
 let ctx     = canvas.getContext('2d');
+
+let photoPreview = document.querySelector('img#picture_preview');
 
 let SliderElementX = document.getElementById('slider_x');
 let SliderElementY = document.getElementById('slider_y');
-let SliderElementZ = document.getElementById('slider_zoom');
+let SliderElementZoom = document.getElementById('slider_zoom');
 
-let imageWidth = 0;
+let cutterPreview = document.querySelector('div#cutter_container');
+let cutterPreviewW = document.querySelector('div#cutter_container').offsetWidth;
+let cutterPreviewH = document.querySelector('div#cutter_container').offsetHeight;
+
 let imageHeight = 0;
-let x, y;
+let imageWidth = 0;
+let x,y,z;
 
-let middleX = 0;
-let middleY = 0;
-let patterZ = 1;
-let z = patterZ;
-
-let imagePreview, imagePreview_width, imagePreview_height;
 
 function updateImageChange(e) {
     e.preventDefault();
@@ -49,110 +44,114 @@ function updateImageChange(e) {
     const [File] = e.target.files;
     
     if (File) {
-        imagePreview        = new Image();
-        imagePreview.setAttribute("id", "picture_preview");
-        imagePreview.src    = URL.createObjectURL(File);
-
-        imagePreview.onload = function () {
-            middleX = (this.naturalWidth/2)-(canvas.width/2);
-            middleY = (this.naturalHeight/2)-(canvas.height/2);
-
-            drawCtx(
-                    middleX, 
-                    middleY, 
-                    patterZ);
-            onLoadMove(this.naturalWidth, this.naturalHeight);
-        };
-
-        // imagePreview.onload = onLoadImage;
+        imagePreview = new Image();
+        imagePreview.src = URL.createObjectURL(File);
+        imagePreview.onload = onLoadImage;
     }
+
+
 }
 
-function drawCtx (x, y, z) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(imagePreview, x,
-                                y,
-    300 * z, 300 * z, 0, 0, canvas.width, canvas.height);
+function onLoadImage() {
+    const { width, height } = imagePreview
+    canvas.width = width;
+    canvas.height = height;
 
-    console.log(imagePreview);
-}
+    // limpar o contexto
+    ctx.clearRect(0, 0, width, height)
 
-function onLoadMove(imageWidth, imageHeight) {
+    // desenhar a imagem no contexto
+    ctx.drawImage(imagePreview, 0, 0)
+
+    photoPreview.src = canvas.toDataURL();
+
+    imageHeight = imagePreview.height;
+    imageWidth = imagePreview.width;
+
     SliderElementX.value = 0;
     SliderElementY.value = 0;
+    // SliderElementZoom.min = 0.5;
+    // SliderElementZoom.max = 1.5;
+    // SliderElementZoom.value = 0;
     
-    SliderElementZ.value    = patterZ;
-    SliderElementZ.step     = 0.01;
-    SliderElementZ.min      = patterZ - 0.5;
-    SliderElementZ.max      = patterZ + 0.5;
-
-    SliderElementX.min = -imageWidth/2;
-    SliderElementY.min = -imageHeight/2;
-    SliderElementX.max = +imageWidth/2;
-    SliderElementY.max = +imageHeight/2;
+    SliderElementX.min = 0;
+    SliderElementY.min = 0;
+    SliderElementX.max = ((imageWidth  -  cutterPreviewW));
+    SliderElementY.max = ((imageHeight -  cutterPreviewW));
+    
+    SliderElementZoom.step = 0.01;
     
     x = SliderElementX.value; y = SliderElementY.value;
+    // z = SliderElementZoom.value;
+    defineTransform(x, y);
+
 }
 
 SliderElementX.oninput = function() {
-    const sliderX = +SliderElementX.value;
-    x = middleX + sliderX;
-    
-    console.log(middleX, SliderElementX.value, x);
+    x = -(SliderElementX.value)+(imageWidth/2)-(cutterPreviewW/2);
+    defineTransform(x, y);
 
-    drawCtx(
-        x, 
-        y, 
-        z);
+    console.log(x);
 }
 
 SliderElementY.oninput = function() {
-    const sliderY = +SliderElementY.value;
-    y = middleY + sliderY;
+    y = -(SliderElementY.value)+(imageHeight/2)-(cutterPreviewH/2);
+    defineTransform(x, y);
+
     console.log(y);
-    
-    drawCtx(
-        x, 
-        y, 
-        z);
 }
 
-SliderElementZ.oninput = function() {
-    const sliderZ = +SliderElementZ.value;
-    z = +sliderZ;
-    console.log(z);
-    
-    drawCtx(
-        x, 
-        y, 
-        z);
+// SliderElementZoom.oninput = function() {
+//     z = (SliderElementZoom.value);
+//     defineTransform(x, y, z);
+// }
+
+function defineTransform(x, y) {
+    // console.table([x, y, z]);
+    picture_preview.style.transform = `translate(${x}px,${y}px)`
 }
+
+
+
 
 function buttonCropClick() {
-    console.log('funcao')
     ableToCut = !ableToCut;
     
     if (ableToCut) {
         SliderElementX.style.display = 'flex';
         SliderElementY.style.display = 'flex';
-        SliderElementZ.style.display = 'flex';
+        SliderElementZoom.style.display = 'flex';
     }else{
+    
+    // pegar do ctx a imagem cortada
+    let cutStart = cutterPreview.getBoundingClientRect();
+    cutStartX = cutStart.left;
+    cutStartY = cutStart.top;
+    cutFinalX = cutStart.right;
+    cutFinalY = cutStart.bottom;
+
+    console.log(`X ${cutStartX}`, `Y ${cutStartY}`)
+    const croppedImage = ctx.getImageData(0, 0, cutFinalX, cutFinalY)
+
+    // limpar o ctx
+    ctx.clearRect(0,0, ctx.width, ctx.height)
+
+    // ajuste de proporções
+    // imagePreview.width = canvas.width = cutterPreviewW;
+    // imagePreview.height = canvas.height = cutterPreviewH;
+
+    // adicionar a imagem cortada ao ctx
+    ctx.putImageData(croppedImage, 0, 0);
+
     // esconder a ferramenta de seleção
     SliderElementX.style.display = 'none';
     SliderElementY.style.display = 'none';
-    SliderElementZ.style.display = 'none';
+    SliderElementZoom.style.display = 'none';
 
     // atualizar o preview da imagem
-    // First you round the corners permanently by making a clipping region:
-
-    let img = new Image();
-    img.src = canvas.toDataURL();
-    imagePreview.src = img.src;
-    console.log(img);
-    //then a user draws something onto HIDDEN canvas, like an image
-    // This image never gets its corners cut
-    // Then you draw the hidden canvas onto your normal one:
-    drawCtx (x, y, z);
+    photoPreview.src = canvas.toDataURL();
+    SliderElementX.value = 0;
+    SliderElementY.value = 0;
     }
 }
 
