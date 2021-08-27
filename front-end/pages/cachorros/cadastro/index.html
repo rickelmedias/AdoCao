@@ -19,10 +19,15 @@
     <link rel="stylesheet" href="../../../styles/pages_body.css">
     <link rel="stylesheet" href="../../../styles/dog_container.css">
     <link rel="stylesheet" href="../../../styles/dog_forms.css">
+
+    <!-- Utils -->
+    <script src="../../../src/login/verify_login.js"></script>
+    <script src="../../../src/utils/redirection.js"></script>
+    <script src="../../../src/utils/on_load_page.js"></script>
     
 </head>
 
-<body>
+<body onload="onLoadPage(event)">
 
     <header>
         <nav>
@@ -63,22 +68,22 @@
             </ul>
         </nav>
     </header>
-
+    
     <main>
+        <input type="file" id="image" accept="image/png, image/jpeg" onchange="updateImageChange(event);">
+        
         <form method="post" enctype="multipart/form-data" class="my_dog_forms" onsubmit="sendPostNewDog(event)">
             <div id="col1_image">
-                        <label for="image-aumigo">Foto Cachorro</label>
-                        <canvas id="cutter_container"></canvas>
-                        <input type="range" name="slider_x" id="slider_x">
-                        <input type="range" name="slider_y" id="slider_y">
-                        <input type="range" name="slider_zoom" id="slider_zoom">
-
-                        <div id="buttons_files">
-                            <div class="button_home" onclick="buttonCropClick()" id="button_crop"><p>Cortar Imagem</p></div>
-                            <div class="button_home" onclick="document.getElementById('image-aumigo').click()"> <p>Buscar Fotos</p>
-                                    <input type="file" name="image-aumigo" id="image-aumigo" accept="image/png, image/jpeg" onchange="updateImageChange(event);">
-                            </div>
-                        </div>
+                <label for="image-aumigo">Foto Cachorro</label>
+                <canvas id="cutter_container"></canvas>
+                <input type="range" id="slider_x">
+                <input type="range" id="slider_y">
+                <input type="range" id="slider_zoom">
+                
+                <div id="buttons_files">
+                    <div class="button_home" onclick="buttonCropClick()" id="button_crop"><p>Cortar Imagem</p></div>
+                    <div class="button_home" onclick="document.getElementById('image').click()"> <p>Buscar Fotos</p></div>
+                </div>
             </div>
             <div id="col2_infos">
                         <label for="name">Nome do Cachorro</label>
@@ -110,12 +115,9 @@
     <footer>
     </footer>
 
-
-    <script src="../../../src/login/verify_login.js"></script>
     <script src="../../../src/dog_cards/post_dogs/post_dogs.js"></script>
     <script src="../../../src/dog_cards/get_breeds/get_breeds.js"></script>
     <script src="../../../src/dog_cards/create_dog_forms.js"></script>
-    <script src="../../../src/utils/redirection.js"></script>
 </body>
 
 </html>

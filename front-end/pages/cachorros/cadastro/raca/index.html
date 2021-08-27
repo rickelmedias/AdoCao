@@ -19,10 +19,14 @@
     <link rel="stylesheet" href="../../../../styles/pages_body.css">
     <link rel="stylesheet" href="../../../../styles/dog_container.css">
     <link rel="stylesheet" href="../../../../styles/dog_forms.css">
-    
+
+    <!-- Utils -->
+    <script src="../../../../src/login/verify_login.js"></script>
+    <script src="../../../../src/utils/redirection.js"></script>
+    <script src="../../../../src/utils/on_load_page.js"></script>
 </head>
 
-<body>
+<body onload="onLoadPage(event)">
 
     <header>
         <nav>
@@ -76,11 +80,8 @@
     <footer>
     </footer>
 
-
-    <script src="../../../../src/login/verify_login.js"></script>
     <script src="../../../../src/dog_cards/post_dogs/post_dogs.js"></script>
     <script src="../../../../src/dog_cards/post_breed/post_breed.js"></script>
-    <script src="../../../../src/utils/redirection.js"></script>
 </body>
 
 </html>

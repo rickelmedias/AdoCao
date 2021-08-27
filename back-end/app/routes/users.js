@@ -20,8 +20,8 @@ router.post('/register', (req, res, next) => {
         bcrypt.hash(req.body.pass,  10,  (errBcrypt, hash) => {
                 if (errBcrypt) { return res.status(500).send({error: errBcrypt}) }
         
-                conn.query(`INSERT INTO users (login, pass) VALUES (?, ?)`,
-                [req.body.login, hash],
+                conn.query(`INSERT INTO users (login, pass, name) VALUES (?, ?, ?)`,
+                [req.body.login, hash, req.body.user_name],
                 (error, results) => {
                     conn.release();
                     if ( error ) {

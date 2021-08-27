@@ -1,12 +1,13 @@
-async function postFormData (formData, token) {
+async function postFormData (body, token) {
     await fetch("http://localhost:3003/aumigos/", {
             method: "post",
 
             headers: {
-                "Authorization": "Bearer " + token,
+                // "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
 
-            body: formData
+            body: body
         })
         .then( (res) => {
             return res.text();

@@ -45,8 +45,6 @@ router.get('/', (req, res, next) => {
 
 // INSERT BREED
 router.post('/', login.authorizationRequire, (req, res, next) => {
-    console.log(req);
-    
     const Req = {
         breed: req.body.breed.trimStart().trimEnd()
     }

@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use('/uploads', express.static('uploads'));
+
 // Cors:
 app.use( (req, res, next) => {
     const serverAccepted = '*';

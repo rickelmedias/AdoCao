@@ -1,14 +1,3 @@
-window.onload = async () => {
-    /* Check if user is logged */
-    const logged = await verifyLogged();
-
-    if (!logged) {
-        if (localStorage.length > 0) {
-            localStorage.clear();
-        }
-    }
-}
-
 async function postUser(user, pass) {
     const logged = await verifyLogged();
 

@@ -18,15 +18,17 @@
     <link rel="stylesheet" href="../../styles/dog_container.css">
     <link rel="stylesheet" href="../../styles/pages_body.css">
     
-    
+    <!-- Functionalities -->
     <script src="../../src/search/search_dogs.js"></script>
-    <script src="../../src/utils/redirection.js"></script>
-    <script src="../../src/login/verify_login.js"></script>
     <script src="../../src/dog_cards/create_dog_all_cards.js"></script>
-    
+
+    <!-- Utils -->
+    <script src="../../src/login/verify_login.js"></script>
+    <script src="../../src/utils/redirection.js"></script>
+    <script src="../../src/utils/on_load_page.js"></script>
 </head>
 
-<body>
+<body onload="onLoadPage(event)">
     
     <header>
         <nav>

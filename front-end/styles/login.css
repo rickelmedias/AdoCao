@@ -28,7 +28,7 @@ main {
     margin-top: 6rem;
 }
 
-article {
+article, form {
     height: 100%;
     width: 100%;
     flex-direction: column;
@@ -97,7 +97,6 @@ input::-ms-clear {
     align-items: center;
 
     width: 100%;
-    margin-bottom: 0.5rem;
 }
 
 .button_home {

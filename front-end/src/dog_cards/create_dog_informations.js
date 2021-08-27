@@ -7,14 +7,16 @@ window.onload = function () {
 async function createDogInformations () {
     const Element = document.querySelector(".dog_card");
     const dog_by_id_response = await getDogInfos();
-
+    console.log(dog_by_id_response);
+    
     const Dog = {
         name:   dog_by_id_response.name,
         age:    dog_by_id_response.age,
         gender: dog_by_id_response.gender,
         breed:  dog_by_id_response.breed,
         image:  dog_by_id_response.image_aumigos,
-        id:     dog_by_id_response.id_aumigos
+        id:     dog_by_id_response.id_aumigos,
+        name_user:  dog_by_id_response.name_user
     }
 
     
@@ -33,6 +35,7 @@ async function createDogInformations () {
                                         `<p class="dog_name">Idade: ${Dog.age}</p>` + 
                                         `<p class="dog_name">Genero: ${Dog.gender}</p>` + 
                                         `<p class="dog_name">Raça: ${Dog.breed}</p>` + 
+                                        `<p class="dog_name">Criador: ${Dog.name_user}</p>` + 
                                     `</section>` +
                             `</div>`;
 

@@ -6,11 +6,6 @@ main {
     align-items: center;
     justify-content: center;
 }
-
-.dog_card {
-    padding-top: 7rem;
-}
-
 .dog_container {
     
     width: 80%;
@@ -78,6 +73,6 @@ main {
 }
 @media (max-width: 600px){
     .dog_container {
-        min-width: 250px;
+        min-width: 280px;
     }
 }

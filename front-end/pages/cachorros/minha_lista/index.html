@@ -16,15 +16,18 @@
 
     <link rel="stylesheet" href="../../../styles/header.css">
     <link rel="stylesheet" href="../../../styles/scrollbar.css">
-    <link rel="stylesheet" href="../../../styles/dog_card.css">
     <link rel="stylesheet" href="../../../styles/pages_body.css">
+    <link rel="stylesheet" href="../../../styles/dog_container.css">
 
+    <script src="../../../src/dog_cards/create_dog_list.js"></script>
 
-    <script src="../../src/createPages/dogPage.js"></script>
-    
+    <!-- Utils -->
+    <script src="../../../src/login/verify_login.js"></script>
+    <script src="../../../src/utils/redirection.js"></script>
+    <script src="../../../src/utils/on_load_page.js"></script>
 </head>
 
-<body>
+<body onload="onLoadPage(event)">
 
     <header>
         <nav>
@@ -69,6 +72,7 @@
     <main>
         <div class="dog_card">     
         </div>
+        <div class="dog_list"></div>
     </main>
 
     <footer>

@@ -1,30 +1,29 @@
-function buttonToCreateDogs() {
-    const Element           = document.querySelector(".dog_button");
-    let output_to_html      =           `<button class="button_home" onclick="Redirect.toRoom('cadastro')">` +
-                                            `Adicionar um novo cachorro` +
-                                        `</button>` + 
-
-                                        `<button class="button_home" onclick="Redirect.toRoom('minha_lista')">` +
-                                            `Minha lista de cachorros` +
-                                        `</button>`;
-
-    Element.innerHTML       = output_to_html;
-}
-
-async function getDogsFromApiAndCreateCards() {
-    const api_url = 'http://localhost:3003/aumigos';
+async function getMyDogList() {
+    const token  = `${localStorage.getItem('token')}`
+    const apiURL = `http://localhost:3003/aumigos/mylist`;
     
-    const response = await fetch(api_url, {
-        method: 'GET'
-    }).then(async function(res) {
-        res = await res.json();
-        return res
-    }).catch(function(err) { 
-        return `${err}`;
-    });
+    const response = await fetch(apiURL, {
+        method: 'get',
 
-    await createDogsCards(response.aumigos);
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then( (res) => {
+        res = res.json();
+        return res;
+    })
+    .then( (res) => {
+        createDogsCards(res.id_aumigos);
+    })
+    .catch((err) => { 
+        console.log(err);
+    });
+    
+    return response;
+
 };
+
 
 async function createDogsCards(aumigos) {
 

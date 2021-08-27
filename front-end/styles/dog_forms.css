@@ -13,7 +13,7 @@
     overflow: hidden;
     height: 300px;
     width: 300px;
-    background: grey;
+    background-image: url("../assets/dog_none_photo.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +70,7 @@ main {
 
 /* Image Preview */
 
-#image-aumigo {
+#image {
     display: none;
 }
 .button_home p {

@@ -1,4 +1,4 @@
-async function postRegister (user, pass) {
+async function postRegister (user, pass, user_name) {
     try {
         if (user.trimStart().trimEnd() == "") {
             return errorToRegister("ERRO: USUARIO ESTÁ EM BRANCO!", false);
@@ -13,7 +13,8 @@ async function postRegister (user, pass) {
                 
                 const bodyRegister = {
                     login:   `${user}`,
-                    pass:   `${pass}`
+                    pass:   `${pass}`,
+                    user_name:   `${user_name}`
                 };
                 
                 urlRegisterPost = `http://localhost:3003/users/register`;
@@ -40,10 +41,12 @@ async function postRegister (user, pass) {
     }
 }
 
-async function sendRegister() {
+async function sendRegister(e) {
+    e.preventDefault();
     const user = await document.getElementById("user").value;
     const pass = await document.getElementById("pass").value;
-    await postRegister(user, pass);
+    const user_name = await document.getElementById("user_name").value;
+    await postRegister(user, pass, user_name);
 }
 
 function errorToRegister(e, isJson) {4

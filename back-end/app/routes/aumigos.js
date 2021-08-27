@@ -35,6 +35,7 @@ const upload = multer({
 
 // SELECT ALL DOGS
 router.get('/', (req, res) => {
+    
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ error: error }) }
 
@@ -74,12 +75,14 @@ router.get('/', (req, res) => {
 // INSERT DOGS
 
 router.post('/', upload.single('image-aumigo'), login.authorizationRequire, (req, res) => {
+
     const Req = {
         name: req.body.name.trimStart().trimEnd(),
         age: req.body.age,
         gender: req.body.gender.toUpperCase().charAt(0),
         breed_id_breed: req.body.breed_id_breed,
-        file: req.file === undefined ? null : req.file.path
+        file: req.file === undefined ? null : req.file.path,
+        owner: req.user.id_user
     }
 
     mysql.getConnection(function (error, conn) {
@@ -87,14 +90,15 @@ router.post('/', upload.single('image-aumigo'), login.authorizationRequire, (req
 
         const DataTime_created = new Date().toLocaleString();
 
-        conn.query('INSERT INTO adocao_db.aumigos (name, age, gender, breed_id_breed, updated_at, created_at, image_aumigos) VALUE (?, ?, ?, ?, ?, ?, ?);',
+        conn.query('INSERT INTO adocao_db.aumigos (name, age, gender, breed_id_breed, updated_at, created_at, image_aumigos, owner_id) VALUE (?, ?, ?, ?, ?, ?, ?, ?);',
             [   Req.name, 
                 Req.age, 
                 Req.gender, 
                 Req.breed_id_breed, 
                 DataTime_created, 
                 DataTime_created,
-                Req.file
+                Req.file,
+                Req.owner
             ], function (error, results, field) {
                 conn.release();
 
@@ -145,11 +149,12 @@ router.get('/id/:id_aumigos', (req, res) => {
         if (error) { return res.status(500).send({ error: error }) }
 
         conn.query(            
-            `SELECT id_aumigos, name, age, gender, breed, aumigos.created_at, aumigos.updated_at, aumigos.image_aumigos ` +
-            `FROM adocao_db.aumigos ` +
-            `INNER JOIN adocao_db.breed ` +
-            `ON adocao_db.aumigos.breed_id_breed = adocao_db.breed.id_breed ` +
-            `WHERE adocao_db.aumigos.id_aumigos = ?;`,
+            `SELECT aumigos.id_aumigos, aumigos.name, aumigos.age, aumigos.gender, breed.breed, aumigos.image_aumigos, aumigos.owner_id, users.name as name_user ` +
+            `FROM aumigos ` +
+            `INNER JOIN breed ` +
+            `ON breed_id_breed = breed.id_breed ` +
+            `LEFT JOIN users ON(users.id_user = aumigos.owner_id) ` +
+            `WHERE aumigos.id_aumigos = ?;`,
             [id],
             function (error, results, field) {
                 conn.release();
@@ -173,8 +178,7 @@ router.get('/id/:id_aumigos', (req, res) => {
                     age: results[0].age,
                     gender: results[0].gender,
                     breed: results[0].breed,
-                    created_at: results[0].created_at,
-                    updated_at: results[0].updated_at,
+                    name_user: results[0].name_user,
                     image_aumigos: results[0].image_aumigos,
                     
                     request: {
@@ -240,6 +244,50 @@ router.get('/search/:letters', (req, res) => {
         )
     });
 });
+
+// SELECT MYLIST DOGS
+router.get('/mylist', login.authorizationRequire, (req, res) => {
+    const id = req.user.id_user;
+
+    mysql.getConnection(function (error, conn) {
+        if (error) { return res.status(500).send({ error: error }) }
+
+        conn.query(            
+            `SELECT (id_aumigos) FROM adocao_db.aumigos WHERE adocao_db.aumigos.owner_id = ?;`,
+            [id],
+            function (error, results, field) {
+                conn.release();
+                console.log(results, "\n");
+
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    });
+                }
+
+                if (results.length == 0) {
+                    return res.status(404).send({
+                        msg: 'Dog not found.'
+                    });
+                }
+
+                const response = {
+                    id_aumigos: results,
+                    
+                    request: {
+                        method: "GET",
+                        description: "SHOW SEARCH",
+                        url: "http://localhost:3003/aumigos"
+                    }
+                }
+
+                res.status(200).send(response);
+            }
+        )
+    });
+});
+
 
 // UPDATE DOGS
 router.patch('/', (req, res) => {
