@@ -99,4 +99,32 @@ router.post('/login/verify', login.authorizationRequire, (req, res, next) => {
     return res.status(200).send(response);
 });
 
+router.post('/login/check', login.authorizationRequire, (req, res, next) => {
+    mysql.getConnection( (err, conn) => {
+        const query =   `SELECT users.login, users.name, COUNT(aumigos.owner_id) as amount FROM users ` +
+                        `INNER JOIN aumigos ON users.id_user = aumigos.owner_id ` +
+                        `WHERE aumigos.owner_id = ?;`;
+        conn.query(query, [req.user.id_user], (error, results, fields) => {
+            conn.release();
+
+            if (error) {
+                return res.status(401).send({error: 'Authentication failed.'})
+            }
+
+            const response = {
+                user_name: results[0].name,
+                user: results[0].login,
+                dogs_posted: results[0].amount
+            }
+
+            if (results != 0) {
+                return res.status(200).send(response);
+            }
+
+            return res.status(401).send({error: 'Authentication failed.'})
+        });
+    });
+});
+
+
 module.exports = router;

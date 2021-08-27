@@ -197,7 +197,6 @@ router.get('/id/:id_aumigos', (req, res) => {
 // SELECT DOGS BY LETTERS
 router.get('/search/:letters', (req, res) => {
     const letters = req.params.letters
-    console.log(letters);
 
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ error: error }) }
@@ -206,7 +205,6 @@ router.get('/search/:letters', (req, res) => {
             `SELECT * FROM adocao_db.aumigos WHERE name LIKE "%${letters}%";`,
             function (error, results, field) {
                 conn.release();
-                console.log(results, "\n");
 
                 if (error) {
                     return res.status(500).send({
@@ -257,7 +255,6 @@ router.get('/mylist', login.authorizationRequire, (req, res) => {
             [id],
             function (error, results, field) {
                 conn.release();
-                console.log(results, "\n");
 
                 if (error) {
                     return res.status(500).send({
