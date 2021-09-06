@@ -1,9 +1,3 @@
-/* Get informations about dog usign id */
-
-window.onload = function () {
-    createDogInformations();
-};
-
 async function createDogInformations () {
     const Element = document.querySelector(".dog_card");
     const dog_by_id_response = await getDogInfos();

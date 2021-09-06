@@ -7,6 +7,8 @@ async function onLoadPage(e) {
         if (Path.ver_cachorros())           { buttonToCreateDogs(); } 
         if (Path.cadastro_cachorros())      { getBreeds(); }
         if (Path.cachorros_minha_lista())   { getMyDogList(); }
+        if (Path.login() || Path.register()){ CreatePageUserLogged(); }
+        if (Path.cachorro_mais_infos())     { createDogInformations(); }
     }else{
         // Redirect pages that need Authentication.
         if  (
@@ -28,37 +30,58 @@ async function onLoadPage(e) {
 const Path = {
     ver_cachorros: () => {
         return ( 
-        path.includes("pages") && 
-        path.includes("cachorros") &&
-        (!path.includes("cadastro")) &&
-        (!path.includes("raca")) &&
-        (!path.includes("minha_list"))
+        path.includes("pages/") && 
+        path.includes("cachorros/") &&
+        (!path.includes("cadastro/")) &&
+        (!path.includes("raca/")) &&
+        (!path.includes("minha_lista/"))
         );
     },
 
     cadastro_cachorros: () => {
         return ( 
-        path.includes("pages") && 
-        path.includes("cachorros") &&
-        path.includes("cadastro") &&
-        (!path.includes("raca"))
+        path.includes("pages/") && 
+        path.includes("cachorros/") &&
+        path.includes("cadastro/") &&
+        (!path.includes("raca/"))
         );
     },
 
     cadastro_cachorros_racas: () => {
         return ( 
-        path.includes("pages") && 
-        path.includes("cachorros") &&
-        path.includes("cadastro") &&
-        path.includes("raca")
+        path.includes("pages/") && 
+        path.includes("cachorros/") &&
+        path.includes("cadastro/") &&
+        path.includes("raca/")
         );
     },
 
     cachorros_minha_lista: () => {
         return ( 
-        path.includes("pages") && 
-        path.includes("cachorros") &&
-        path.includes("minha_lista")
+        path.includes("pages/") && 
+        path.includes("cachorros/") &&
+        path.includes("minha_lista/")
+        );
+    },
+
+    cachorro_mais_infos: () => {
+        return ( 
+        path.includes("pages/") && 
+        path.includes("cachorro/")
+        );
+    },
+
+    login: () => {
+        return ( 
+        path.includes("pages/") && 
+        path.includes("login/")
+        );
+    },
+
+    register: () => {
+        return ( 
+        path.includes("pages/") && 
+        path.includes("registrar/")
         );
     },
 
