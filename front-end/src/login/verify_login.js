@@ -24,14 +24,15 @@ async function verifyLogged() {
             };
         })
         .catch( (e) => {
-            let error = `${e}`;
-            // console.log(error);
-                if (error.toUpperCase() === "ERROR: USER NOT LOGGED"){
-                    return false;
-                }else{
-                    // console.log(error)
-                    return true;
-                }
+            return false;
+            // let error = `${e}`;
+            // // console.log(error);
+            //     if (error.toUpperCase() === "ERROR: USER NOT LOGGED"){
+            //         return false;
+            //     }else{
+            //         // console.log(error)
+            //         return true;
+            //     }
             }
         )
 

@@ -6,28 +6,20 @@
 
 nav {
     position: relative;
-
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
-
 header {
     overflow: hidden;
     position: fixed;
     width: 100%;
     height: 6rem;
     padding: 0.5rem;
-    background: rgba(22, 146, 18, 0.7);
-    /* background: var(--primary-green); */
-
+    background: var(--primary-color);
     display: flex;
     justify-content: space-between;
-
 }
-
-
-
 
 #logo {
     margin-left: 4rem;
@@ -48,17 +40,10 @@ header nav ul, header nav li {
     margin-right: 2.5rem;
     margin-left: 2.5rem;
     list-style: none;
-
     font-size: 1.75rem;
-    color: var(--white-green);
+    color: var(--black-color);
 }
-.separator_nav {
-    position: relative;
-    top: 1rem;
-    border: 0.1rem solid rgba(255, 255, 255, 0.5);;
-    background: rgba(255, 255, 255, 0.5);;
-    height: 4rem;
-}
+
 
 /*
 =
@@ -129,7 +114,7 @@ header nav ul, header nav li {
     transition: border-width 0.4s;
 }
 .menu-a:hover {
-    border-bottom: 0.25rem var(--secondary-green) solid;
+    border-bottom: 0.25rem var(--secondary-color) solid;
 }
 
 

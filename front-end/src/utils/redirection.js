@@ -1,3 +1,4 @@
+
 const Redirect = {
     
     toDogInformations: (id) => {

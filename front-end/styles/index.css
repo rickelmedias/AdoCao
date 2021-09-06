@@ -7,7 +7,7 @@
 main {
     display: grid;
     grid-template-columns: 50% 50%;
-    color: var(--secondary-green);
+    color: var(--black-color);
     justify-content: center;
     text-align: center;
     

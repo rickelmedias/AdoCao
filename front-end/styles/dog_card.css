@@ -1,5 +1,4 @@
 main {
-    
     width: 100%;
     padding: 2.5rem;
     display: flex;
@@ -7,7 +6,6 @@ main {
     justify-content: center;
 }
 .dog_container {
-    
     width: 80%;
     height: 60%;
     max-width: 630px;
