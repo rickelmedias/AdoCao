@@ -11,24 +11,24 @@ nav {
     align-items: flex-start;
 }
 header {
-    overflow: hidden;
-    position: fixed;
     width: 100%;
-    height: 6rem;
-    padding: 0.5rem;
-    background: var(--primary-color);
+    height: 10rem;
+    padding-right: 5rem;
+    padding-left: 5rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 #logo {
     margin-left: 4rem;
-    width: 6rem;
     height: 100%;
     flex-wrap: wrap;
+    position: relative;
+    top: 40px;
 }
 #logo:hover {
-    filter: invert(90%) sepia(14%) saturate(197%) hue-rotate(67deg) brightness(110%) contrast(96%);
+    filter: brightness(105%) ;
     cursor: pointer;
 }
 header nav ul, header nav li {
@@ -41,6 +41,7 @@ header nav ul, header nav li {
     margin-left: 2.5rem;
     list-style: none;
     font-size: 1.75rem;
+    font-weight: 400;
     color: var(--black-color);
 }
 
@@ -60,7 +61,9 @@ header nav ul, header nav li {
 .search_bar {    
     display: flex;
     align-items: center;
-    margin-right: 4rem;   
+    margin-right: 5rem;
+    position: relative;
+    top: 30px;
 }
 .search_bar button {
     display: flex;

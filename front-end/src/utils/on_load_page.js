@@ -7,7 +7,7 @@ async function onLoadPage(e) {
         if (Path.ver_cachorros())           { buttonToCreateDogs(); } 
         if (Path.cadastro_cachorros())      { getBreeds(); }
         if (Path.cachorros_minha_lista())   { getMyDogList(); }
-        if (Path.login() || Path.register()){ CreatePageUserLogged(); }
+        if (Path.conta() || Path.register()){ CreatePageUserLogged(); }
         if (Path.cachorro_mais_infos())     { createDogInformations(); }
     }else{
         // Redirect pages that need Authentication.
@@ -71,10 +71,10 @@ const Path = {
         );
     },
 
-    login: () => {
+    conta: () => {
         return ( 
         path.includes("pages/") && 
-        path.includes("login/")
+        path.includes("conta/")
         );
     },
 

@@ -76,20 +76,20 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
+
 .button_home {
     border: none;
     border-radius: 1rem;
-    margin-top: 0.25rem;
-    width: 80%;
-    height: 3.5rem;
-    background: var(--primary-green);
+    background: var(--secondary-color);
     color: var(--white-green);
+    font-weight: 600;
     font-size: 1.15rem;
     line-height: 0.8rem;
-    padding: 0.5rem;
 }
+
 .button_home:hover {
-    background: var(--secondary-green);
+    background: var(--secondary-color);
+    opacity: 0.9;
     cursor: pointer;
 }
 
