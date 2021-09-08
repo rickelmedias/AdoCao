@@ -84,7 +84,7 @@
     color: var(--white-green);
     font-weight: 600;
     font-size: 1.15rem;
-    line-height: 0.8rem;
+    line-height: 1.25rem;
 }
 
 .button_home:hover {
@@ -118,18 +118,15 @@
 
 @media (max-width: 1024px) {
     .dog_container {
-        
         margin-right: 2rem;
         margin-left: 2rem;
     }
 }
 @media (max-width: 740px)  {
-    .dog_list {
-        
+    .dog_list { 
         display: flex;
         margin: 4rem 0 0 0;
         justify-content: center;
-
     }
 
     .dog_container {

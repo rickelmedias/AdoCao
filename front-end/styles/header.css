@@ -126,32 +126,28 @@ header nav ul, header nav li {
 = Responsive Web
 =
 */
-
-@media (max-width: 1024px) {
-    html {
-      font-size: 83.75%; /* Tamanho de 15px */
-      font-size: 1rem;
-    }
-
-    .search_bar, nav {
+@media (max-width: 1270px)  {
+    ul#menu li:nth-child(2),
+    ul#menu li:nth-child(3),
+    ul#menu li:nth-child(4),
+    ul#menu li:nth-child(5){
         display: none;
         visibility: hidden;
         overflow: hidden;
     }
 
-
-}
-@media (max-width: 920px)  {
-    #menu, nav {
-        display: none;
-        visibility: hidden;
-        overflow: hidden;
+    header, ul#menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
-    header, #logo {
+    ul#menu li a img#logo {
         display: flex;
         justify-content: center;
         margin: 0;
     }
-
+    html {
+        font-size: 83.75%; /* Tamanho de 15px */
+        font-size: 1rem;
+    }
 }

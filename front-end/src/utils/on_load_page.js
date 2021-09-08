@@ -8,8 +8,8 @@ async function onLoadPage(e) {
         if (Path.cadastro_cachorros())      { getBreeds(); }
         if (Path.cachorros_minha_lista())   { getMyDogList(); }
         if (Path.conta() || Path.register()){ CreatePageUserLogged(); }
-        if (Path.cachorro_mais_infos())     { createDogInformations(); }
     }else{
+        if (Path.cachorro_mais_infos())     { createDogInformations(); }
         // Redirect pages that need Authentication.
         if  (
             Path.cadastro_cachorros() ||

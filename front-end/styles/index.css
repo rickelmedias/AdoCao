@@ -1,21 +1,21 @@
-/*
-=
-= Main
-=
-*/
 main {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+
+div#presentation {
+    width: 100%;
+    flex-direction: row;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
-#presentation {
-    display: grid;
-    grid-template-columns: 50% 40%;
-    color: var(--black-color);
-    padding-right: 10rem;
-    padding-left: 10rem;
+div#presentation aside{
+    max-width: 500px;
 }
-aside:nth-child(1) {
+div#presentation aside:nth-child(1) {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -24,23 +24,23 @@ aside:nth-child(1) {
     width: 100%;
     height: 100%;
 }
-aside:nth-child(1) img {
-    width: 300px;
+div#presentation aside:nth-child(1) img {
+    width: 100%;
+    max-width: 300px;
 }
-aside:nth-child(1) h3 {
+div#presentation aside:nth-child(1) h3 {
     text-align: center;
     font-size: 1.5rem;
     color: var(--secondary-color);
 }
-aside:nth-child(1) p {
+div#presentation aside:nth-child(1) p {
     font-weight: 500;
-    padding-left: 10rem;
-    padding-right: 10rem;
+    max-width: 300px;
     text-align: center;
     font-size: 1rem;
     color: var(--black-color);
 }
-section {
+div#presentation section {
     display: grid;
     align-items: flex-start;
     align-content: center;
@@ -49,23 +49,26 @@ section {
     flex-wrap: wrap;
     
     width: 100%;
+    max-width: 600px;
     height: 100%;
 }
-section p:nth-child(1) {
+div#presentation section div#why-dogs p:nth-child(1) {
     font-weight: 500;
     padding: 1rem;
     text-align: right;
     font-size: 1rem;
     color: var(--black-color);
+    max-width: 300px;
 }
-section p:nth-child(2) {
+div#presentation section div#why-dogs p:nth-child(2) {
     font-weight: 500;
     padding: 1rem;
     text-align: left;
     font-size: 1rem;
     color: var(--black-color);
+    max-width: 300px;
 }
-section h3 {
+div#presentation section h3 {
     height: 100%;
     display: flex;
     text-align: center;
@@ -74,94 +77,112 @@ section h3 {
     justify-content: center;
     align-items: flex-end;
     padding: 1rem;
+    margin-bottom: 2rem;
 }
-section div#why_dogs {
-    display: grid;
-    grid-template-columns: 50% 50%;
+div#presentation section div#why-dogs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
-.button_home {
-    width: 40rem;
+
+div#button-homepage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div#button-homepage .button_home {
+    width: 60%;
     height: 3.5rem;
     margin-top: 6rem;
     margin-bottom: 6rem;
+    font-size: 1.25rem;
+    
+    min-width: 200px;
 }
+
 div#curiosity-dogs {
-    height: 300px;
-    display: grid;
-    grid-template-rows: 20% 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     margin-bottom: 6rem;
+}
+div#curiosity-dogs-sections {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+div#curiosity-dogs-sections section {
+    max-width: 300px;
+}
+div#curiosity-dogs-sections section p:nth-child(1){
+    font-size: 30px;
 }
 div#curiosity-dogs h3 {
     text-align: center;
     font-size: 1.5rem;
     color: var(--ter-color);
-}
-div#curiosity-dogs-sections {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    padding-left: 20rem;
-    padding-right: 20rem;
-}
-div#curiosity-dogs-sections p:nth-child(1) {
-    display: flex;
-    justify-items: s;
-    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
-/*
-=
-= Footer / .dog_list
-=
-*/
-
-footer {
-    padding-bottom: 1rem;
-    flex-wrap: wrap;
+div#find-dogs-rectangle {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    margin: auto;
+    flex-wrap: wrap-reverse;
+    padding: 5rem;
+    width: 80%;
+    max-width: 870px;
+    min-height: 285px;
+    background-color: rgba(250, 168, 71, 0.2);
+    border-radius: 25px 95px 25px 95px;
+}
+div#find-dogs h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--qua-color);
+    margin-bottom: 2rem;
+}
+div#find-dogs-rectangle div#rectangle-infos {
+    max-width: 500px;
+}
+div#find-dogs-rectangle img#rectangle-image {
+    object-fit: cover;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 50%;
+}
+div#find-dogs-rectangle h3 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0;
+}
+div#find-dogs-rectangle h4 {
+    font-size: 1.25rem;
 }
 
-/*
-=
-= Responsive Web
-=
-*/
 
-@media (max-width: 740px)  {
-    main {
+
+@media (max-width:768px) {
+    div#find-dogs-rectangle {
+        padding: 2rem;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        margin: 2rem 0 0 0;
+        flex-direction: column-reverse;
     }
-
-    aside, section, aside img, section p {
+    div#find-dogs-rectangle div#rectangle-infos {
+        width: 100%;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
         align-items: center;
-        text-align: center;
-        margin: 0;
-    }
-}
-
-@media (max-width: 650px)  { 
-    main, aside, section {
-        display: flex;
         justify-content: center;
         flex-direction: column;
-        align-content: center;
-        flex-wrap: wrap;
     }
-
-    section {
-        margin-top: 2rem;
+    div#find-dogs-rectangle div#rectangle-infos p {
+        display: none;
     }
-
-    section p {
-        font-size: 1.5rem;
-    }
-
 }

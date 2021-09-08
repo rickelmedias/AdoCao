@@ -1,0 +1,10 @@
+footer {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+footer p {
+    color: rgba(250, 168, 71, 0.8);
+}
