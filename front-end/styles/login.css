@@ -9,14 +9,16 @@ main {
     padding-bottom: 12rem;
 }
 
+form {
+    padding: 2rem;
+}
 
 .modal-log-reg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    overflow: hidden;
-    border: solid rgba(41, 71, 39, 0.5) 0.15rem;
     border-radius: 2rem;
-    display: grid;
-    grid-template-columns: 50% 50%;
 
     width: 70%;
     height: 60%;
@@ -24,9 +26,7 @@ main {
     max-width: 600px;
     min-height: 350px;
 
-    background: linear-gradient(45deg, rgba(114, 224, 106, 0.295), rgba(95, 160, 90, 0.274));
-    
-    margin-top: 6rem;
+    background: linear-gradient(45deg, rgba(250, 168, 71, 0.2), rgba(250, 168, 71, 0.25));
 }
 
 article, form {
@@ -38,13 +38,15 @@ article, form {
     align-items: center;
 }
 
-article p a {
-    font-size: 1.1rem;
-    color: rgba(41, 71, 39, 0.7);
+article p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--black-color);
 }
 
 article p a:hover {
-    color: rgba(41, 71, 39, 1);
+    color: var(--secondary-color);
+    cursor: pointer;
 }
 
 aside img {
@@ -52,16 +54,16 @@ aside img {
     width: 100%;
     height: 100%;
     border-radius: 0 50% 50% 0;
-    border-right: solid rgba(41, 71, 39, 0.5) 0.25rem;
+    border-right: solid rgba(250, 168, 71, 0.25) 0.25rem;
 }
 
 label {
     margin-bottom: 0.5rem;
     text-align: center;
     font-weight: 900;
-    color: rgba(58, 97, 55, 0.8);
+    color: var(--secondary-color);
     font-size: 170%;
-    text-shadow: 1px 1px 1px #fff;
+
 }
 
 input {
@@ -73,17 +75,16 @@ input {
     padding-top: auto;
     padding-left: 1rem;
     border-radius: 0.75rem;
-    background-color: rgba(255, 255, 255, 0.55);
-    border: solid rgba(41, 71, 39, 0.25) 0.15rem;
-    box-shadow: inset 2px 2px 5px #bdd4b1, inset -5px -5px 10px rgb(236, 255, 232);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
     outline: none;
     font-size: 95%;
     font-weight: 600;
-    color: rgba(41, 71, 39, 0.8);
+    color: var(--black-color);
 }
 
 input:focus {
-    box-shadow: inset 2px 2px 2px #c7e7c4, inset -2px -2px 2px rgb(247, 255, 237);
+    box-shadow: inset 1px 1px 1px var(--secondary-color), inset -2px -2px 2px rgb(247, 255, 237);
 }
 
 input::-ms-reveal,
@@ -100,27 +101,21 @@ input::-ms-clear {
     width: 100%;
 }
 
-.button_home {
+button.button_home {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.75rem;
+    margin-top: 1rem;
 
-    font-size: 5%;
-
+    font-size: 1rem;
+    width: 200px;
     max-width: 10rem;
-    max-height: 1.5rem;
-}
-
-
-footer {
-    height: 8rem;
-    width: 100%;
-    background: #77C171;
+    max-height: 2rem;
 }
 
 ::placeholder {
-    color: #3c5546;
+    color: var(--black-color);;
     letter-spacing: 0.10rem;
 
     transition: 0.3s all;
@@ -128,7 +123,7 @@ footer {
 }
 
 .label-h1 {
-    color: #6d9268;
+    color: var(--black-color);;
     font-size: 1rem;
     
     width: 100%;
@@ -136,28 +131,21 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
-@media (max-width: 650px) {
 
+@media (max-width: 650px) {
     * {
         font-size: 95%;
     }
-
     input {
         min-width: 150px;
     }
-
     aside img, aside {
         display: none;
         visibility: hidden;
         overflow: hidden;
     }
-
     .modal-log-reg {
         grid-template-columns: 100%;
-        
     }
-
-
 }
