@@ -42,7 +42,7 @@ main {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: solid var(--black-color) 0.5rem;
+    border: solid var(--black-color) 0.25rem;
 }
 
 .dog_infos {

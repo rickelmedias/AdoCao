@@ -157,6 +157,7 @@ div#find-dogs-rectangle img#rectangle-image {
     width: 100%;
     max-width: 200px;
     border-radius: 50%;
+    border: solid var(--black-color) 0.25rem;
 }
 div#find-dogs-rectangle h3 {
     display: flex;

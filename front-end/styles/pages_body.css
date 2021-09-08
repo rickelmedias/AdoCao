@@ -41,8 +41,8 @@ html, body {
 }
 body {
     background-image: url('../assets/Background.png');
-    background-repeat: repeat-y;
-    background-position: center;
+    background-repeat: no-repeat;
+    background-position: top;
     overflow-y: hidden;
 }
 a{

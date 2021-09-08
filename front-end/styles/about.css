@@ -1,0 +1,95 @@
+main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div#whatis h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+div#whatis section, div#whatused section, div#whatused2 section,
+div#whoisme {
+    text-align: center;
+    max-width: 600px;
+}
+
+div#whatused, div#whatused2, div#whoisme {
+    margin-top: 5rem;
+}
+div#whatused h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--ter-color);
+    margin-bottom: 2rem;
+}
+div#whatused img {
+    margin-top: 2rem;
+}
+
+div#whatused2 h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--qua-color);
+    margin-bottom: 2rem;
+}
+
+div#whoisme h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--black-color);
+    margin-bottom: 2rem;
+}
+div#whoisme div#picture-n-social {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+}
+div#whoisme section {
+    max-height: 200px;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+div#social-media {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+div#whoisme p {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+div#talk-with-me h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--black-color);
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+}
+div#button-homepage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div#button-homepage .button_home {
+    width: 100%;
+    height: 2.5rem;
+    font-size: 1.25rem;
+    min-width: 200px;
+}
+img#picture-me {
+    max-width: 125px;
+}
