@@ -4,6 +4,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 2rem;
 }
 
 div#whatis h3 {
@@ -44,6 +45,13 @@ div#whoisme h3 {
     color: var(--black-color);
     margin-bottom: 2rem;
 }
+div#whoisme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 div#whoisme div#picture-n-social {
     display: flex;
     justify-content: center;
@@ -53,9 +61,10 @@ div#whoisme div#picture-n-social {
     padding-right: 1rem;
 }
 div#whoisme section {
-    max-height: 200px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     text-align: left;
 }
 div#social-media {
@@ -92,4 +101,16 @@ div#button-homepage .button_home {
 }
 img#picture-me {
     max-width: 125px;
+}
+
+@media (max-width: 1280px) {
+    /* div#whoisme {
+        max-width: 280px;
+    } */
+    div#whoisme section {
+        flex-wrap: wrap;
+    }
+    /* div#whoisme p {
+        max-width: 280px;
+    } */
 }
