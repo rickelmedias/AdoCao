@@ -9,8 +9,8 @@ async function onLoadPage(e) {
         if (Path.cachorros_minha_lista())   { getMyDogList(); }
         if (Path.conta() || Path.register()){ CreatePageUserLogged(); }
     }else{
-        if (Path.cachorro_mais_infos())     { createDogInformations(); }
         // Redirect pages that need Authentication.
+        
         if  (
             Path.cadastro_cachorros() ||
             Path.cadastro_cachorros_racas() ||
@@ -24,7 +24,8 @@ async function onLoadPage(e) {
     }
     
     // Things that don't need login: 
-    if (Path.ver_cachorros()){  getDogsFromApiAndCreateCards(); }
+    if (Path.ver_cachorros())           {  getDogsFromApiAndCreateCards(); }
+    if (Path.cachorro_mais_infos())     { createDogInformations(); }
 }
 
 const Path = {

@@ -1,11 +1,10 @@
-@keyframes up {
-    from {
-        opacity: 0;
-        transform: translateY(1rem);
-    }
-    to {
-        opacity: 1;
-    }
+/**/
+main {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8rem;
 }
 
 #cutter_container {
@@ -19,74 +18,170 @@
     align-items: center;
     border-radius: 1rem;
 }
-/**/
-main {
-    margin: 0 auto;
-    animation: up 0.4s 0.2s backwards;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
 .my_dog_forms {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: rgba(250, 168, 71, 0.2);
 }
-
+/* form {
+    height: 600px;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 4rem;
+    background-color: rgba(250, 168, 71, 0.2);
+} */
 #col1_image {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
+    background: rgba(250, 168, 71, 0.2);
+    border-radius: 2rem;
 }
-
+#col2_infos {
+    margin-left: 2rem;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+#col2_infos a, .label-input-breed a{
+    cursor: pointer;
+}
+#first-inputs-group {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+#second-inputs-group {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.label-input {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+.label-input input, .label-input select {
+    border: none;
+    padding: 1rem;
+    background-color: rgba(255, 250, 245, 0.8);
+    border-radius: 1rem;
+    width: 200px;
+}
+.label-input p {
+    font-size: 0.75rem;
+    max-width: 200px;
+}
 #buttons_files {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     width: 100%;
 }
 #buttons_files .button_home {
-    width: 40%;
-    text-align: center;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
 }
-
-#col1_button_confirm, #col2_button_cancel{
-    width: 100%;
+#add-button {
+    margin: 0.5rem;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
-
+#add-button a {
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+#add-button div.button_home {
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+}
 #picture_preview {
     position: absolute;
     transform-origin: center;
 }
 
+#slider_x, #slider_y, #slider_zoom {
+    margin: 0.5rem;
+    background: var(--secondary-color);
+    border: solid 1px var(--black-color);
+    border-radius: 8px;
+    height: 7px;
+    width: 180px;
+    outline: none;
 
+    -webkit-appearance: none;
+}
 
 /* Image Preview */
 
 #image {
     display: none;
 }
-.button_home p {
+/* .button_home p {
     width: 100%;
-}
+} */
 .button_home {
     display: flex;
     align-items: center;
     justify-items: center;
     text-align: center;
-    width: 50%;
+    padding: 0.25rem;
 }
-
+div#col2_infos button.button_home {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 0.75rem;
+}
 /* Selection Tool */
 #selection_tool {
     position: fixed;
     display: none;
     border: 2px dashed blue;
+}
+
+
+/*
+Raça Page (Breed) create.
+*/
+
+.label-input-breed {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+.label-input-breed input {
+    border: none;
+    padding: 1rem;
+    background-color: rgba(255, 250, 245, 0.8);
+    border-radius: 1rem;
+    width: 200px;
+}
+.label-input-breed button {
+    margin-top: 2rem;
 }

@@ -1,12 +1,16 @@
 function buttonToCreateDogs() {
-    const Element           = document.querySelector(".dog_button");
-    let output_to_html      =           `<button class="button_home" onclick="Redirect.toRoom('cadastro')">` +
+    const Element           = document.querySelector(".buttons");
+    let output_to_html      =           `<div class="dog_button"><div id="button-icons-align">` +
+                                        `<img src="../../assets/add_dog_icon.svg" alt="List of dogs">` +
+                                        `<button class="button_home" onclick="Redirect.toRoom('cadastro')">` +
                                             `Adicionar um novo cachorro` +
-                                        `</button>` + 
+                                        `</button></div>` + 
 
+                                        `<div id="button-icons-align">` +
+                                        `<img src="../../assets/my_list_icon.svg" alt="List of dogs">` +
                                         `<button class="button_home" onclick="Redirect.toRoom('minha_lista')">` +
                                             `Minha lista de cachorros` +
-                                        `</button>`;
+                                        `</button></div></div>`;
 
     Element.innerHTML       = output_to_html;
 }
@@ -40,8 +44,8 @@ async function createDogsCards(aumigos) {
                                                                                         
         output_to_html      +=  `<div class="dog_container">` +
                                     `<img src="${dog_img}" alt="Imagem do cachorro" class="dog_image_container">` +
+                                    `<h3 class="dog_name">${dog_infos.name.length > 10 ? dog_infos.name.substring(0,10) + "..." : dog_infos.name}</h3>` + 
                                     `<button class="button_home" value="${Dog.id_aumigos}" onclick="Redirect.toDogInformations(${Dog.id_aumigos})">Conhecer Aumigo</button>` +
-                                    `<p class="dog_name">${dog_infos.name}</p>` + 
                                 `</div>`;
     }
 

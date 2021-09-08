@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../../../styles/pages_body.css">
     <link rel="stylesheet" href="../../../styles/dog_container.css">
     <link rel="stylesheet" href="../../../styles/dog_forms.css">
+    <link rel="stylesheet" href="../../../styles/footer.css">
 
     <!-- Utils -->
     <script src="../../../src/login/verify_login.js"></script>
@@ -62,45 +63,53 @@
         
         <form method="post" enctype="multipart/form-data" class="my_dog_forms" onsubmit="sendPostNewDog(event)">
             <div id="col1_image">
-                <label for="image-aumigo">Foto Cachorro</label>
+                <label for="image-aumigo"><strong>Foto Cachorro</strong></label>
                 <canvas id="cutter_container"></canvas>
+                <div id="buttons_files">
+                    <div id="add-button">
+                        <a onclick="document.getElementById('image').click()">Adicionar foto</a><div class="button_home" onclick="document.getElementById('image').click()"><p> + </p></div>
+                    </div>
+                    <div class="button_home" onclick="buttonCropClick()" id="button_crop"><p>Cortar Imagem</p></div>
+                </div>
                 <input type="range" id="slider_x">
                 <input type="range" id="slider_y">
                 <input type="range" id="slider_zoom">
                 
-                <div id="buttons_files">
-                    <div class="button_home" onclick="buttonCropClick()" id="button_crop"><p>Cortar Imagem</p></div>
-                    <div class="button_home" onclick="document.getElementById('image').click()"> <p>Buscar Fotos</p></div>
-                </div>
             </div>
             <div id="col2_infos">
-                        <label for="name">Nome do Cachorro</label>
-                        <input type="text" name="name" id="name" placeholder="Coloque o nome do cachorro aqui." maxlength="45" minlength="2" required>
-                    
-                        <label for="age">Idade do Cachorro</label>
-                        <input type="number" name="age" id="age" placeholder="Coloque a idade do cachorro aqui." required min="0" step="1">
-                        
-                        <label for="gender">Genero do Cachorro</label>
-                        <select name="gender" id="gender" required>
-                                <option value="Male">Menino</option>
-                                <option value="Female">Menina</option>
-                        </select>
-                        
-                        <label for="breed_id_breed">Raça do Cachorro</label>
-                        <select name="breed_id_breed" id="breed_id_breed" required>
-                        </select>
-                        <p>Sua raça não existe? <a href="./raca">Clique aqui e crie agora!</a></p>
-            </div>
-            <div id="col1_button_confirm">
-                        <button type="submit" class="button_home"><p>Confirmar Criação</p></button>
-            </div>
-            <div id="col2_button_cancel">
-                        <div class="button_home" onclick="Redirect.toRoom('./../')"><p>Cancelar</p></div>
+                    <div id="first-inputs-group">
+                        <div class="label-input">
+                            <label for="name"><strong>Nome</strong></label>
+                            <input type="text" name="name" id="name" placeholder="Coloque o nome." maxlength="45" minlength="2" required>
+                        </div>
+                        <div class="label-input">
+                            <label for="age"><strong>Idade</strong></label>
+                            <input type="number" name="age" id="age" placeholder="Coloque a idade." required min="0" step="1">
+                        </div>
+                    </div>
+                    <div id="second-inputs-group">
+                        <div class="label-input">
+                            <label for="gender"><strong>Genero</strong></label>
+                            <select name="gender" id="gender" required>
+                                    <option value="Male">Menino</option>
+                                    <option value="Female">Menina</option>
+                            </select>
+                        </div>
+                        <div class="label-input">
+                            <label for="breed_id_breed"><strong>Raça</strong></label>
+                            <select name="breed_id_breed" id="breed_id_breed" required>
+                            </select>
+                            <p>Sua raça não existe? <a href="./raca">Clique aqui e crie agora!</a></p>
+                        </div>
+                    </div>
+                        <button type="submit" class="button_home"><p>Clique aqui para criar novo Aumigo!</p></button>
+                        <a onclick="Redirect.toRoom('./../')"><p>Cancelar</p></a>
             </div>
         </form>
     </main>
 
     <footer>
+        <p>Web developed by Rickelme Dias</p>
     </footer>
 
     <script src="../../../src/dog_cards/post_dogs/post_dogs.js"></script>

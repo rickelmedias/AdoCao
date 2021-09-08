@@ -25,11 +25,14 @@ async function createDogInformations () {
                                     `</aside>` +
 
                                     `<section class="dog_infos">` +
-                                        `<p class="dog_name">Nome: ${Dog.name}</p>` + 
-                                        `<p class="dog_name">Idade: ${Dog.age}</p>` + 
-                                        `<p class="dog_name">Genero: ${Dog.gender}</p>` + 
-                                        `<p class="dog_name">Raça: ${Dog.breed}</p>` + 
-                                        `<p class="dog_name">Criador: ${Dog.name_user}</p>` + 
+                                        `<h3>
+                                        ${Dog.gender.includes("F") ? `A menina ${Dog.name}` : `O menino ${Dog.name}` }
+                                        </h3>` + 
+                                        `<h4>Raça: ${Dog.breed}</h4>` + 
+                                        `<p><strong>
+                                        ${Dog.age != 1 ? `Tem ${Dog.age} anos de idade.`: `até ${Dog.age} ano de idade.`}
+                                        </strong></p>` + 
+                                        `<p>postado por: ${Dog.name_user}</p>` + 
                                     `</section>` +
                             `</div>`;
 

@@ -27,9 +27,14 @@ async function getMyDogList() {
 
 async function createDogsCards(aumigos) {
 
-    const Element = document.querySelector(".dog_list");
+    const Element = document.querySelector("main");
     const DogsArray = aumigos;
-    let output_to_html = "";
+    let output_to_html =  ` <div id="my-list-back">
+                                    <img src="../../../assets/my_list_icon.svg" alt="List of dogs">
+                                    <h4><a href="./../">Voltar</a></h4>
+                            </div>
+                            <div class="dog_list">`;
+
 
     for (Dog of DogsArray) {
         const dog_infos     =   await getSpecificDogInfosFromAPI(Dog.id_aumigos);
@@ -39,13 +44,13 @@ async function createDogsCards(aumigos) {
                                                                                         
         output_to_html      +=  `<div class="dog_container">` +
                                     `<img src="${dog_img}" alt="Imagem do cachorro" class="dog_image_container">` +
-                                    `<button class="button_home" value="${Dog.id_aumigos}" onclick="Redirect.toDogInformations(${Dog.id_aumigos})">Conhecer Aumigo</button>` +
-                                    `<p class="dog_name">${dog_infos.name}</p>` + 
+                                    `<h3 class="dog_name">${dog_infos.name.length > 10 ? dog_infos.name.substring(0,10) + "..." : dog_infos.name}</h3>` + 
+                                    `<button class="button_home meet-dog" value="${Dog.id_aumigos}" onclick="Redirect.toDogInformations(${Dog.id_aumigos})">Conhecer Aumigo</button>` +
                                 `</div>`;
     }
-
+    output_to_html          += `</div>`;
+    
     Element.innerHTML = output_to_html;
-
 }
 
 async function getSpecificDogInfosFromAPI(id) {

@@ -3,24 +3,111 @@
 = Dog Container
 =
 */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 8rem;
+}
+
+
+/*
+=
+= Button Customs
+=
+*/
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.dog_button {
+    display: grid;
+    grid-template-columns: 50% 50%;  
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+    height: 300px;
+    background-color: rgba(250, 168, 71, 0.2);
+    border-radius: 2rem;
+    margin-bottom: 5rem;
+}
+.dog_button .button_home {
+    max-width: 250px;
+    padding: 0.75rem;
+    min-height: 80px;
+    width: 70%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.button_home {
+    border: none;
+    border-radius: 1rem;
+    background: var(--secondary-color);
+    color: var(--white-green);
+    font-weight: 600;
+    font-size: 1.15rem;
+    line-height: 1.25rem;
+}
+.button_home:hover {
+    background: var(--secondary-color);
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+div#button-icons-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div#button-icons-align img {
+    margin-bottom: 2rem;
+    width: 100px;
+}
+
+
+/*
+=
+= Dog name
+=
+*/
+
+h3.dog_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--secondary-green);
+}
 
 .dog_container{
     display: grid;
+    justify-content: center;
     grid-template-rows: 70% 20% 10%;
-    padding: 1rem;
+    padding: 2rem;
 
     width: 12vw;
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 300px;
+    max-width: 300px;
 
     height: 30vh;
-    min-height: 280px;
-    max-height: 300px;
+    min-height: 300px;
+    max-height: 500px;
     
-    background: rgba(119, 193, 113, 0.2);
+    background-color: rgba(250, 168, 71, 0.2);
     margin: 1rem;
     border-radius: 2rem;
-    border: 0.25rem rgba(119, 193, 113, 0.5) solid;
+    border: none;
 }
 
 .dog_container button {
@@ -30,21 +117,22 @@
     width: 100%;
     height: 100%;
     font-size: 1rem;
+    padding: 1rem;
     line-height: 0.8rem;
     border-radius: 5rem;
-    background-color: rgba(119, 193, 113, 0.8);
+    background-color: var(--secondary-color);
 }  
 
-.dog_container img{
+.dog_container img {
     display: flex;
     justify-content: center;
     align-content: center;
-    width: 100%;
-    height: 90%;
+    width: 150px;
+    height: 150px;
     min-height: 110px;
     object-fit: cover;
     border-radius: 50%;
-    border: 0.25rem rgba(255, 255, 255, 0.4) solid;
+    border: 0.25rem var(--secondary-color) solid;
 }
 
 .dog_list {
@@ -58,58 +146,24 @@
     padding-bottom: 1rem;
 }
 
-/*
-=
-= Button Customs
-=
-*/
-.dog_button {
-    display: flex;  
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
-}
-
-.dog_button .button_home {
-    width: 20%;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-
-.button_home {
-    border: none;
-    border-radius: 1rem;
-    background: var(--secondary-color);
-    color: var(--white-green);
-    font-weight: 600;
-    font-size: 1.15rem;
-    line-height: 1.25rem;
-}
-
-.button_home:hover {
-    background: var(--secondary-color);
-    opacity: 0.9;
-    cursor: pointer;
-}
-
-
-/*
-=
-= Dog name
-=
-*/
-
-.dog_name {
+div#my-list-back {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    max-width: 900px;
     justify-content: center;
-    margin-top: 0.5rem;
-    text-align: center;
-    font-weight: 600;
-    color: var(--secondary-green);
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+    height: 300px;
+    background-color: rgba(250, 168, 71, 0.2);
+    border-radius: 2rem;
+    margin-bottom: 5rem;
 }
 
+div#my-list-back img {
+    margin-bottom: 2rem;
+    width: 100px;
+}
 /*
 =
 =   Media

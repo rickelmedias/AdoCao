@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../../../../styles/pages_body.css">
     <link rel="stylesheet" href="../../../../styles/dog_container.css">
     <link rel="stylesheet" href="../../../../styles/dog_forms.css">
-
+    <link rel="stylesheet" href="../../../../styles/footer.css">
     <!-- Utils -->
     <script src="../../../../src/login/verify_login.js"></script>
     <script src="../../../../src/utils/redirection.js"></script>
@@ -45,7 +45,6 @@
                     <a class="menu-a" href="../../../sobre/">Sobre</a>
                 </li>
 
-
                 <li>
                     <a class="menu-a" href="../../../cachorros/">Cachorros</a>
                 </li>
@@ -59,14 +58,18 @@
 
     <main>
         <form method="post" class="my_dog_forms" onsubmit="postBreeds(event)">
-                <label for="breed">Nome da Raça</label>
+            <div class="label-input-breed">
+                <label for="breed"><strong> Nome da Raça </strong></label>
                 <input type="text" name="breed" id="breed" minlength="2" maxlength="32" required>
-        
-                <button type="submit" class="button_home">Confirmar Criação</button>
-        </form>
+
+                <button type="submit" class="button_home"><strong>Confirmar Criação</strong></button>
+                <a onclick="Redirect.toRoom('./../')"><p>Cancelar</p></a>
+            </div>
+            </form>
     </main>
 
     <footer>
+        <p>Web developed by Rickelme Dias</p>
     </footer>
 
     <script src="../../../../src/dog_cards/post_dogs/post_dogs.js"></script>

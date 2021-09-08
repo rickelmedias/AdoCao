@@ -88,6 +88,7 @@ div#presentation section div#why-dogs {
 }
 
 div#button-homepage {
+    max-width: 1000px;
     width: 100%;
     display: flex;
     justify-content: center;
