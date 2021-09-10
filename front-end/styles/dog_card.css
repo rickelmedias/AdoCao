@@ -63,13 +63,8 @@ main {
     font-size: 1.25rem;
 }
 
-@media (max-width: 1280px){
-    .dog_container {
-        min-width: 300px;
-    }
-}
-@media (max-width: 600px){
-    .dog_container {
-        min-width: 280px;
+@media (max-width: 400px){
+    .dog_image img {
+        max-width: 200px;
     }
 }

@@ -32,12 +32,19 @@
 <body onload="onLoadPage(event)">
     <header>
         <nav>
+            <a onclick="document.querySelector('div.mobile-menu').click()">
+                <img id="logo" src="../../assets/adocao_logo.svg" alt="Logo do website adocão">
+            </a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
             <ul id="menu">
                 <li>
-                    <a href="#">
-                            <img id="logo" src="../../assets/adocao_logo.svg" alt="Logo do website adocão">
-                    </a>
+                    <a onclick="document.querySelector('div.mobile-menu').click()">X</a>
                 </li>
+                
                 <li>
                     <a class="menu-a" href="../../">Inicio</a>
                 </li>
@@ -47,7 +54,7 @@
                 </li>
 
                 <li>
-                    <a class="menu-a" href="../cachorros/">Cachorros</a>
+                    <a class="menu-a" onclick="document.querySelector('div.mobile-menu').click()">Cachorros</a>
                 </li>
 
                 <li>
@@ -73,6 +80,8 @@
     <footer>
         <p>Web developed by Rickelme Dias</p>
     </footer>
+
+    <script src="../../src/utils/menu_mobile.js"></script>
 </body>
 
 </html>

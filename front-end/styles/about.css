@@ -1,10 +1,5 @@
 main {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 2rem;
+    padding: 8rem;
 }
 
 div#whatis h3 {
