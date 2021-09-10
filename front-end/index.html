@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <title>AdoCao</title>
     
     <meta charset="UTF-8">
@@ -11,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap" rel="stylesheet">
-    
 
+    <!-- Styles -->
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/scrollbar.css">
@@ -22,43 +21,42 @@
 </head>
 
 <body>
-    
+    <!-- Header -->
     <header>
+        <!-- Navigate bar -->
         <nav>
+            <!-- Logo -->
             <a onclick="document.querySelector('div.mobile-menu').click()">
                     <img id="logo" src="./assets/adocao_logo.svg" alt="Logo do website adocão">
             </a>
+            <!-- Mobile menu -->
             <div class="mobile-menu">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
-
+            <!-- Menu list -->
             <ul id="menu">
                 <li>
                     <a onclick="document.querySelector('div.mobile-menu').click()">X</a>
                 </li>
-
                 <li>
                     <a class="menu-a" onclick="document.querySelector('div.mobile-menu').click()">Inicio</a>
                 </li>
-
                 <li>
                     <a class="menu-a" href="./pages/sobre/">Sobre</a>
                 </li>
-
                 <li>
                     <a class="menu-a" href="./pages/cachorros/">Cachorros</a>
                 </li>
-
                 <li>
                     <a class="menu-a" href="./pages/conta/">Conta</a>
                 </li>
-
             </ul>
         </nav>
     </header>
 
+    <!-- Page content -->
     <main>
         <div id="presentation">
             <aside>
@@ -164,10 +162,12 @@
         </div>
     </main>
 
+    <!-- Page footer -->
     <footer>
         <p>Web developed by Rickelme Dias</p>
     </footer>
 
+    <!-- Body scripts -->
     <script src="./src/utils/menu_mobile.js"></script>
 </body>
 

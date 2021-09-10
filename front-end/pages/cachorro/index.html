@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <title>AdoCao</title>
 
     <meta charset="UTF-8">
@@ -12,28 +11,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap" rel="stylesheet">
 
-
     <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="../../styles/scrollbar.css">
     <link rel="stylesheet" href="../../styles/dog_card.css">
     <link rel="stylesheet" href="../../styles/pages_body.css">
 
-
     <script src="../../src/dog_cards/create_dog_informations.js"></script>
     
-    <!-- Utils -->
     <script src="../../src/login/verify_login.js"></script>
     <script src="../../src/utils/redirection.js"></script>
     <script src="../../src/utils/on_load_page.js"></script>
 </head>
 
 <body onload="onLoadPage(event)">
-
     <header>
         <nav>
+            <!-- Logo -->
             <a onclick="document.querySelector('div.mobile-menu').click()">
                 <img id="logo" src="../../assets/adocao_logo.svg" alt="Logo do website adocão">
             </a>
+            <!-- Mobile Menu -->
             <div class="mobile-menu">
                 <div class="line1"></div>
                 <div class="line2"></div>
