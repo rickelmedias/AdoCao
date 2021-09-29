@@ -31,7 +31,7 @@ async function getDogsFromApiAndCreateCards() {
 };
 
 async function createDogsCards(aumigos) {
-
+    
     const Element = document.querySelector(".dog_list");
     const DogsArray = aumigos;
     let output_to_html = "";
@@ -41,11 +41,14 @@ async function createDogsCards(aumigos) {
         const dog_img       =   dog_infos.image_aumigos != null ? 
                                 `http://localhost:3003/${dog_infos.image_aumigos}` :
                                 '../../assets/dog_none_photo.jpg';
-                                                                                        
+        
+
+        const stringObject = `${Dog.id_aumigos}, ${window.location.host}`;
+
         output_to_html      +=  `<div class="dog_container">` +
                                     `<img src="${dog_img}" alt="Imagem do cachorro" class="dog_image_container">` +
                                     `<h3 class="dog_name">${dog_infos.name.length > 10 ? dog_infos.name.substring(0,10) + "..." : dog_infos.name}</h3>` + 
-                                    `<button class="button_home" value="${Dog.id_aumigos}" onclick="Redirect.toDogInformations(${Dog.id_aumigos})">Conhecer Aumigo</button>` +
+                                    `<button class="button_home" value="${Dog.id_aumigos}" onclick="Redirect.toDogInformations('${stringObject}')">Conhecer Aumigo</button>` +
                                 `</div>`;
     }
 

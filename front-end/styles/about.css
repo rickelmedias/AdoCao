@@ -86,7 +86,7 @@ div#button-homepage {
 }
 div#button-homepage .button_home {
     width: 100%;
-    height: 2.5rem;
+    min-height: 2.5rem;
     font-size: 1.25rem;
     min-width: 200px;
 }

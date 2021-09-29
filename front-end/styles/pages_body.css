@@ -11,7 +11,7 @@
 }
 
 main {
-    padding: 8rem;
+    padding: 2rem 2rem;
     animation: up 0.4s 0.2s backwards;
 }
 
@@ -61,6 +61,6 @@ main {
 
 @media (max-width:400px) {
     main {
-        padding-top: 2rem;
+        padding: 2rem 2rem;
     }
 }

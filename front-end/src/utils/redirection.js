@@ -1,11 +1,13 @@
 
 const Redirect = {
     
-    toDogInformations: (id) => {
+    toDogInformations: async (object) => {
+        let arrObj = await object.split(',');
+        
         if (window.location.pathname.includes('/front-end/')) {
-            window.location.href = `http://127.0.0.1:5500/front-end/pages/cachorro/#/id=${id}`;
+            window.location.href = `adocao.rickelmedias.dev/pages/cachorro/#/id=${arrObj[0]}`;
         }else{
-            window.location.href = `http://127.0.0.1:5500/pages/cachorro/#/id=${id}`;
+            window.location.href = `adocao.rickelmedias.dev/pages/cachorro/#/id=${arrObj[0]}`;
         }
     },
 
