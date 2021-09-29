@@ -135,24 +135,31 @@ This site makes possible for dogs to have adoptive owners.
 ## Technologies used
 <br>
 <h3>Web Designs</h3>
+<p align="justify">
+<a href="#">
 <img src="https://img.shields.io/badge/Adobe%20XD%20-black?style=plastic&logo=adobexd&logoColor=purple" alt="Adobe XD"/>
 <img src="https://img.shields.io/badge/Illustrator%20-black?style=plastic&logo=adobeillustrator&logoColor=orange" alt="Illustrator"/>
-<br><br>
+</a>
+</p>
+<br>
 <h3>Front-end</h3>
 <p align="justify">
+<a href="#">
 <img src="https://img.shields.io/badge/Live%20Server-black?style=plastic&logo=visualstudiocode&logoColor=blue" alt="Live server"/>
 <img src="https://img.shields.io/badge/Javascript-black?style=plastic&logo=javascript&logoColor=yellow" alt="Live server"/>
 <img src="https://img.shields.io/badge/Javascript-black?style=plastic&logo=html5&logoColor=red" alt="HTML"/>
 <img src="https://img.shields.io/badge/Javascript-black?style=plastic&logo=css3&logoColor=cyan" alt="CSS"/>
+</a>
 <br><br>
 <h3>Back-end</h3>
 <p align="justify">
+<a href="#">
 <img src="https://img.shields.io/badge/MySQL-black?style=plastic&logo=mysql&logoColor=violet" alt="postgres"/>
 <img src="https://img.shields.io/badge/NodeJS%20-black?style=plastic&logo=nodedotjs&logoColor=green" alt="node.js"/>
 <img src="https://img.shields.io/badge/ExpressJS%20-black?style=plastic&logo=express&logoColor=white" alt="node.js"/>
 <img src="https://img.shields.io/badge/JWT%20Token-black?style=plastic&logo=JSON Web Tokens&logoColor=grey" alt="node.js"/>
-
 <img src="https://img.shields.io/badge/Postman%20-black?style=plastic&logo=postman&logoColor=orange" alt="postman"/>
+</a>
 </p>
 
 
@@ -259,6 +266,9 @@ To run the backend without mistakes you need to configure your database. To conf
 <br>
 <hr>
 <br>
-## Developer
 
-[<img src="https://avatars.githubusercontent.com/u/43411893?s=400&u=c1a306f43d649c6c7e92cda85709ba604b20406b&v=4" width=115><br><sub>Rickelme Dias</sub>](https://github.com/RickelmeDias) 
+## Developer
+<p align="left">
+<img src="https://avatars.githubusercontent.com/u/43411893?s=400&u=c1a306f43d649c6c7e92cda85709ba604b20406b&v=4" width=115><br>
+<a href="https://github.com/RickelmeDias">Rickelme Dias</a>
+</p>
