@@ -9,7 +9,8 @@ const login = require('../../middleware/login.js');
 require('dotenv').config();
 
 const JWT = {
-    token: process.env.JWT_TOKEN
+    token: process.env.JWT_TOKEN,
+    salt: process.env.JWT_SALT
 };
 
 // Register:
@@ -17,7 +18,7 @@ const JWT = {
 router.post('/register', (req, res, next) => {
     mysql.getConnection( (error, conn) => {
         if (error) { return res.status(500).send({error: error}) }
-        bcrypt.hash(req.body.pass,  10,  (errBcrypt, hash) => {
+        bcrypt.hash(req.body.pass, JWT.salt,  (errBcrypt, hash) => {
                 if (errBcrypt) { return res.status(500).send({error: errBcrypt}) }
         
                 conn.query(`INSERT INTO users (login, pass, name) VALUES (?, ?, ?)`,
